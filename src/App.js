@@ -1,15 +1,9 @@
-
 import './App.css';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>
-          Street Sports
-        </h1>
-      </header>
-    </div>
+    <HomePage></HomePage>
   );
 }
 
