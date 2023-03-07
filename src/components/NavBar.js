@@ -5,7 +5,7 @@ import { Stack } from '@mui/system'
 
 const NavBar = () => {
   return (
-    <AppBar>
+    <AppBar position="sticky">
         <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
             <IconButton>
                 <img src={StreetSportsLogo} width="250px" alt="street sports logo"/>
@@ -19,7 +19,7 @@ const NavBar = () => {
                 <Button color="inherit">About Us</Button>
             </Stack>
 
-            <Button color="primary" variant='contained'><Typography variant='h5'>Sign Up</Typography></Button>
+            <Button color="primary" variant='contained'><Typography variant='h5'>Login</Typography></Button>
             
         </Toolbar>
         
