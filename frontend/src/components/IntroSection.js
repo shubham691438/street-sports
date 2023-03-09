@@ -6,10 +6,10 @@ import HeroImage from '../assets/images/heroImage.png'
 const IntroSection = () => {
   return (
     <Box sx={{margin:"45px 45px"}}>
-        <Stack direction="row" spacing={3} justifyContent="space-between">
+        <Stack direction="row" spacing={3} justifyContent="space-between" flexWrap={{xs:"wrap-reverse", md:'nowrap'}}>
             <Stack>
                 <Typography sx={{color:"red",mt:"100px"}}>Discover and Join Local Sports Tournaments</Typography>
-                <Typography  sx={{color:"white",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",xs:"2rem",md:"2.5rem"}}}>
+                <Typography  sx={{color:"white",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2.5rem",xs:"2rem"}}}>
                     From Fans to Players <br/> Your Local Sports <br/>Community Awaits!
                 </Typography>
                 <Button variant="contained" sx={{mt:"70px"}}>
