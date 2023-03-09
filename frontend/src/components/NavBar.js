@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Button, Hidden, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { AppBar,Box, Button, Hidden, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
 import StreetSportsLogo from '../assets/icons/streetSportsLogo.png'
 import { Stack } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu';
@@ -11,7 +11,7 @@ const NavBar = () => {
     <AppBar position="sticky">
         <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
             <IconButton>
-                <img src={StreetSportsLogo} width="250px" alt="street sports logo"/>
+                <Box component='img' src={StreetSportsLogo} width={{xs:"175px",sm:"250px"}} alt="street sports logo"/>
             </IconButton>
 
             <Hidden mdDown>

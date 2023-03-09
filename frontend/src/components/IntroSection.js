@@ -9,16 +9,14 @@ const IntroSection = () => {
         <Stack direction="row" spacing={3} justifyContent="space-between" flexWrap={{xs:"wrap-reverse", md:'nowrap'}}>
             <Stack>
                 <Typography sx={{color:"red",mt:"100px"}}>Discover and Join Local Sports Tournaments</Typography>
-                <Typography  sx={{color:"white",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2.5rem",xs:"2rem"}}}>
-                    From Fans to Players <br/> Your Local Sports <br/>Community Awaits!
-                </Typography>
+                
+                <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2rem",xs:"1.5rem"}}}>From Fans to Players </Typography>
+                <Typography  sx={{color:"white",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2rem",xs:"1.5rem"}}}> Your Local Sports <br/>Community Awaits!  </Typography>
                 <Button variant="contained" sx={{mt:"70px"}}>
                  <Typography variant='h5' fontWeight="500">SignUp Now</Typography>
                 </Button>
             </Stack>
-            <img src={HeroImage} width="50%"
-  maxWidth="400px"
-  height="auto"/>
+            <Box component='img' display='block' src={HeroImage} width='100%' height="auto" maxWidth={{xs:"400px",md:"600px"}}  alt='hero'/>
         </Stack>
     </Box>
   )
