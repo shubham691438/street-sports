@@ -3,6 +3,7 @@ import {Box, Typography} from '@mui/material'
 import NavBar from '../components/NavBar'
 import IntroSection from '../components/IntroSection'
 import EventsCarousel from '../components/EventsCarousel'
+import Features from '../components/Features'
 
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
     <NavBar/>
     <IntroSection/>
     <EventsCarousel/>
+    <Features/>
     </Box>
   )
 }
