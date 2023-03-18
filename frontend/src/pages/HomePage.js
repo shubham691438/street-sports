@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar'
 import IntroSection from '../components/IntroSection'
 import EventsCarousel from '../components/EventsCarousel'
 import Features from '../components/Features'
+import Footer from '../components/Footer'
 
 
 const HomePage = () => {
@@ -13,6 +14,7 @@ const HomePage = () => {
     <IntroSection/>
     <EventsCarousel/>
     <Features/>
+    <Footer/>
     </Box>
   )
 }

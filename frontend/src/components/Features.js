@@ -1,7 +1,6 @@
 import { Grid,Button,CardActionArea } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import FeatureCard from './FeatureCard'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -14,18 +13,18 @@ import SportsNewsImage from '../assets/images/sports+news.jpg'
 
 const Features = () => {
   return (
-    <Box sx={{margin:"5% 5%"}}  mt="100px">
-        <Grid container spacing={5} >
-            <Grid item xs={12} sm={4}> 
-                <Box  >
-                    <Card sx={{backgroundColor:'#3c3f4a',color:'white'}}>
+    <Box sx={{margin:"5% 5%"}}  mt="100px" >
+        <Grid container spacing={5} justifyContent="space-between" alignItems="stretch" > 
+            <Grid item xs={12} sm={6} lg={3}> 
+                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                    <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%',objectFit:'fill'}}>
                         <CardActionArea>
                         <CardMedia
                         component='img'
                         image={TournamentCupImage}
                         alt='tournament-cup'
-                        sx={{maxHeight:"360px"}}
-                        
+                        height="200px"
+                        sx={{objectFit:'fill'}}
                         />
                         <CardContent>
                             <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"}}}>Participate in upcomming Sports Tournaments!</Typography>
@@ -43,24 +42,23 @@ const Features = () => {
                     </Card>
                 </Box>
             </Grid>
-            <Grid item xs={12} sm={4}>
-                <Box>
-                    <Card sx={{backgroundColor:'#3c3f4a',color:'white'}}>
+            <Grid item xs={12} sm={6} lg={3}>
+                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                    <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%'}}>
                         <CardActionArea>
                         <CardMedia
                         component='img'
                         image={OrganiseSportImage}
                         alt='organise-sports'
-                        sx={{maxHeight:"300px"}}
+                        height="200px"
+                        sx={{objectFit:'fill'}}
                         />
                         <CardContent>
                             <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"}}}>Organize Your Sports Event with Ease on Our Platform</Typography>
                             <Typography sx={{fontFamily:"sans-serif"}} >
                             Our platform provides a unique opportunity for organizers to connect with players 
-                            and audiences and promote their sports events.Whether you're planning a local tournament,a charity game, or a national competition, our platform offers a streamlined process for event 
-                             registration and promotion. 
-                             With our easy-to-use interface, you can create event easily.
-                        
+                            and audiences and promote their sports events.ith our easy-to-use interface, you can create and 
+                            customize your event page and manage participant registrations.
                             </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -71,42 +69,44 @@ const Features = () => {
                     </Card>
                 </Box>
             </Grid>
-           <Grid item xs={12} sm={4}>
-            <Box >
-                    <Card sx={{backgroundColor:'#3c3f4a',color:'white'}} >
-                        <CardActionArea>
-                        <CardMedia
-                        component='img'
-                        image={SportsNewsImage}
-                        alt='sports-news'
-                        sx={{maxHeight:"300px"}}
-                        
-                        />
-                        <CardContent>
-                            <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"}}}>Stay Up-to-Date with the Latest Sports News</Typography>
-                            <Typography sx={{fontFamily:"sans-serif"}} >
-                            Our platform is your one-stop-source for all the latest sports news and updates,
-                            with a strong emphasis on local sports coverage and in-depth analysis on the sports
-                            teams and events in local community along with National and International news.
-                            </Typography>
-                        </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Button size="small" variant="contained">Share</Button>
-                            <Button size="small" variant="contained">Latest News</Button>
-                        </CardActions>
-                    </Card>
+           <Grid item xs={12} sm={6} lg={3}>
+            <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%'}} >
+                    <CardActionArea>
+                    <CardMedia
+                    component='img'
+                    image={SportsNewsImage}
+                    alt='sports-news'
+                    height="200px"
+                    sx={{objectFit:'fill'}}
+                    />
+                    <CardContent>
+                        <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"}}}>Stay Up-to-Date with the Latest Sports News</Typography>
+                        <Typography sx={{fontFamily:"sans-serif"}} >
+                        Our platform is your one-stop-source for all the latest sports news and updates,
+                        with a strong emphasis on local sports coverage and in-depth analysis on the sports
+                        teams and events in local community along with National and International news.<br/><br/>
+                        </Typography>
+                    </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" variant="contained">Share</Button>
+                        <Button size="small" variant="contained">Latest News</Button>
+                    </CardActions>
+                </Card>
 
                 </Box>
             </Grid>
-            {/* <Grid item xs={12} sm={12}> 
-                <Box  >
-                    <Card sx={{backgroundColor:'#3c3f4a',color:'white'}}>
+            <Grid item xs={12} sm={6} lg={3} > 
+                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                    <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%' }}>
                         <CardActionArea>
                         <CardMedia
                         component='img'
                         image={CoachImage}
                         alt='Coach-image'
+                        height="200px"
+                        sx={{objectFit:'fill'}}
                         />
                         <CardContent>
                             <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"}}}>Learn Any Sports from Registered Coaches</Typography>
@@ -124,7 +124,7 @@ const Features = () => {
                         </CardActions>
                     </Card>
                 </Box>
-            </Grid> */}
+            </Grid>
         </Grid>
     </Box>
   )
