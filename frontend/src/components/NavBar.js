@@ -17,11 +17,11 @@ const NavBar = () => {
 
             <Hidden mdDown>
               <Stack direction="row" spacing={{xs:0,lg:2}} alignContent="center" >
-                  <NavLink to='/' ><Button color="inherit" >Home</Button></NavLink>
-                  <NavLink to='/tournaments'><Button color="inherit">Tournaments</Button></NavLink>
-                  <NavLink to='/learn'><Button color="inherit">Learn</Button></NavLink>
-                  <NavLink to='/sports-news'><Button color="inherit">Sports News</Button></NavLink>
-                  <NavLink to='/about-us'><Button color="inherit">About Us</Button></NavLink>
+                  <NavLink to='/'   style={{color: "inherit",textDecoration:"none"}}><Button color="inherit" >Home</Button></NavLink>
+                  <NavLink to='/tournaments' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Tournaments</Button></NavLink>
+                  <NavLink to='/learn ' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Learn</Button></NavLink>
+                  <NavLink to='/sports-news' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Sports News</Button></NavLink>
+                  <NavLink to='/about-us' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">About Us</Button></NavLink>
               </Stack>
 
               <Button sx={{backgroundColor:"#3392FF"}} variant='contained'><Typography  >Login</Typography></Button>
