@@ -1,9 +1,38 @@
+const mongoose = require('mongoose')
 const Tournament = require('../models/TournamentModel')
 
 //to get all the tournaments
+const getTournaments = async(req,res)=>{
+    try{
+        const tournaments = await Tournament.find({})
+        res.status(200).json(tournaments)
+    }
+    catch (err){
+        res.status(501).json({error:err.message})
+    }
 
+}
 
 //to get a single tournament
+const getTournament =async(req,res)=>{
+
+    const {id}=req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id))
+    {
+        return res.status(501).json({error:err.message})
+    }
+
+    const tournament=await Tournament.findById(id)
+    
+    if(!tournament)
+    {
+        return res.status(404).json({error:'No such tournament exist'})
+    }
+
+    res.status(200).json(tournament)
+   
+}
 
 
 //to post a new tournament
@@ -52,8 +81,8 @@ const createTournament=async(req,res)=>{
         await tournament.save()
         res.status(200).json({msg:"tournmanents details added successfully"})
     }
-    catch(error){
-        res.status(500).json({error:error.message})
+    catch(err){
+        res.status(500).json({error:err.message})
     }
    
 }
@@ -61,11 +90,52 @@ const createTournament=async(req,res)=>{
 
 
 //to delete a tournament
+const deleteTournament= async(req,res)=>{
+    const {id}=req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id))
+    {
+        return res.status(501).json({error:err.message})
+    }
+
+    const tournament=await Tournament.findOneAndDelete({_id:id})
+    
+    if(!tournament)
+    {
+        return res.status(404).json({error:'No such tournament exist'})
+    }
+
+    res.status(200).json({msg:"tounament deleted successfully"})
+
+}
 
 
 //to update a tournament
+const updateTournament= async(req,res)=>{
+    const {id}=req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id))
+    {
+        return res.status(501).json({error:err.message})
+    }
+
+    const tournament=await Tournament.findOneAndUpdate({_id:id},{
+        ...req.body
+    })
+    
+    if(!tournament)
+    {
+        return res.status(404).json({error:'No such tournament exist'})
+    }
+
+    res.status(200).json({msg:"tounament Updated successfully"})
+}
 
 
 module.exports={
-    createTournament
+    getTournaments,
+    getTournament,
+    createTournament,
+    deleteTournament,
+    updateTournament
 }

@@ -10,32 +10,32 @@ const reviewSchema = new Schema({
 const participantSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  phone: { type: String, required: true },
-  rating: { type: Number, required: true },
+  phone: { type: String, required: false },
+  rating: { type: Number, required: false },
   reviews: [reviewSchema],
-  photo: { type: String, required: true }
+  photo: { type: String, required: false }
 });
 
 const rulesSchema = new Schema({
-  participation_fee: { type: Number, required: true },
-  eligibility_criteria: { type: String, required: true },
+  participation_fee: { type: Number, required: false },
+  eligibility_criteria: { type: String, required: false },
   prize_pool: {
-    first_place: { type: String, required: true },
-    second_place: { type: String, required: true },
-    third_place: { type: String, required: true }
+    first_place: { type: String, required: false },
+    second_place: { type: String, required: false },
+    third_place: { type: String, required: false }
   }
 });
 
 const scheduleSchema = new Schema({
   start_date: { type: Date, required: true },
-  end_date: { type: Date, required: true },
-  duration: { type: String, required: true }
+  end_date: { type: Date, required: false },
+  duration: { type: String, required: false }
 });
 
 const socialMediaSchema = new Schema({
-  facebook: { type: String, required: true },
-  twitter: { type: String, required: true },
-  instagram: { type: String, required: true }
+  facebook: { type: String, required: false },
+  twitter: { type: String, required: false },
+  instagram: { type: String, required: false }
 });
 
 const organizerSchema = new Schema({
@@ -54,15 +54,15 @@ const participantsSchema = new Schema({
 
 const tournamentSchema = new Schema({
   name: { type: String, required: true },
-  poster: { type: String, required: true },
+  poster: { type: String, required: false },
   place: { type: String, required: true },
   schedule: scheduleSchema,
   organizer: organizerSchema,
   participants: participantsSchema,
   rules: rulesSchema,
   audience: {
-    no_of_audience: { type: Number, required: true },
-    fee: { type: Number, required: true }
+    no_of_audience: { type: Number, required: false },
+    fee: { type: Number, required: false }
   }
   
 },{timestamps:true});
