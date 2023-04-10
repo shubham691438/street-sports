@@ -1,4 +1,5 @@
 {
+  "proxy":"http://localhost:3030/",
   "name": "street-sports",
   "version": "0.1.0",
   "private": true,

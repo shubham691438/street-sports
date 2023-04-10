@@ -2,6 +2,7 @@ import { Typography,Button} from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import React from 'react'
 import HeroImage from '../assets/images/heroImage.png'
+import { Link } from 'react-router-dom'
 
 const IntroSection = () => {
   return (
@@ -13,7 +14,7 @@ const IntroSection = () => {
                 <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2rem",xs:"1.5rem"}}}>From Fans to Players </Typography>
                 <Typography  sx={{color:"white",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2rem",xs:"1.5rem"}}}> Your Local Sports <br/>Community Awaits!  </Typography>
                 <Button variant="contained" sx={{mt:"70px"}}>
-                 <Typography variant='h5' fontWeight="500">SignUp Now</Typography>
+                <Link to='/signup' style={{color: "inherit",textDecoration:"none"}}><Typography variant='h5' fontWeight="500">SignUp Now</Typography></Link>
                 </Button>
             </Stack>
             <Box component='img'  src={HeroImage} width='100%' height="auto" maxWidth={{xs:"400px",md:"600px"}}  alt='hero'/>

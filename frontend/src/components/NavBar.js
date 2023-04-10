@@ -5,9 +5,15 @@ import { Stack } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
 import { NavLink } from 'react-router-dom';
-
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const {logout} = useLogout()
+  const {user}= useAuthContext()
+  const navigate=useNavigate()
+
   return (
     <AppBar position="sticky">
         <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
@@ -24,7 +30,16 @@ const NavBar = () => {
                   <NavLink to='/about-us' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">About Us</Button></NavLink>
               </Stack>
 
-              <Button sx={{backgroundColor:"#3392FF"}} variant='contained'><Typography  >Login</Typography></Button>
+              {!user && <NavLink to='/login' style={{color: "inherit",textDecoration:"none"}}><Button sx={{backgroundColor:"#3392FF"}} variant='contained'><Typography  >Login</Typography></Button></NavLink>}
+              
+              {user &&
+              <Stack direction='row' spacing={2}>
+                <NavLink to='/profile' style={{color: "inherit",textDecoration:"none"}}><Button fontSize='20px' fontWeight={500} variant='contained'>Profile</Button></NavLink>
+                <Button onClick={()=>{logout(); navigate('/')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
+              </Stack>}
+
+          
+              
             </Hidden>
             <Hidden mdUp>
               <PopupState variant="popover" popupId="demo-popup-menu">
