@@ -12,79 +12,40 @@ const createToken =(id)=>{
 
 
 
-
 //signup post request to create a new user in db
+const signup = async (req, res) => {
+  const {email, password} = req.body
 
-// handle errors
-const handleErrors = (err) => {
-    let errors = { email: '', password: '' };
+  try {
+    const user = await User.signup(email, password)
 
-    // email not registered
-    if (err.message === 'email not registered') {
-        errors.email = 'email is not registered';
-    }
+    // create a token
+    const token = createToken(user._id)
+    
 
-    // incorrect password
-    if (err.message === 'incorrect password') {
-        errors.password = 'password is incorrect';
-    }
-  
-    // duplicate email error
-    if (err.code === 11000) {
-      errors.email = 'Email is already registered';
-      return errors;
-    }
-  
-    // validation errors
-    if (err.message.includes('user validation failed')) {
-      
-      Object.values(err.errors).forEach(({ properties }) => {
-        errors[properties.path] = properties.message;
-      });
-    }
-  
-    return errors;
+    res.status(200).json({email, token})
+  } catch (error) {
+    res.status(400).json({error: error.message})
   }
-
-
-const signup=async(req,res)=>{
-    try{
-        const user= new User({
-            email:req.body.email,
-            password:req.body.password
-        })
-
-        await user.save()
-        const token=createToken(user._id);
-        res.cookie('jwt',token,{ httpOnly : true, maxAge:maxAge*1000})
-        res.status(200).json({user:user._id})
-    }
-    catch (err){
-        const errors = handleErrors(err);
-        res.status(400).json({ errors });
-    }
 }
 
+// login post request 
+const login = async (req, res) => {
+  const {email, password} = req.body
 
+  try {
+    const user = await User.login(email, password)
 
-//login post request to authenticate a current user
-const login=async(req,res)=>{
-    const { email, password } = req.body;
+    // create a token
+    const token = createToken(user._id)
 
-    try {
-      const user = await User.login(email, password);
-
-      const token = createToken(user._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-      res.status(200).json({ user: user._id });
-    } 
-    catch (err) {
-      const errors = handleErrors(err);
-      res.status(400).json({ errors });
-    }
+    res.status(200).json({email, token})
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 }
 
-//logout get get request to log a user out
+//logout get  request to log a user out
 const logout =(req,res)=>{
     res.cookie('jwt','',{maxAge:1,HttpOnly:true})
     res.status(200).json({msg:"logged out successfully"})

@@ -6,14 +6,21 @@ const {
     logout
 } = require('../controllers/authController')
 
+const requireAuth =require('../middleware/requireAuth')
+
 //signup post request to create a new user in db
 router.post('/signup',signup)
 
 //login post request to authenticate a current user
 router.post('/login',login)
 
-//logout get get request to log a user out
-router.get('/logout',logout)
+//get request for user profile after authentication
+router.use('/profile',requireAuth)
+router.get('/profile',(req,res)=>{
+    res.status(200).json({msg:'authorised'})
+})
+
+
 
 
 module.exports=router
