@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import React, { useState, useEffect } from 'react';
 import Newscard from '../components/Newscard';
 
@@ -11,7 +11,7 @@ const options = {
 };
 
 const SportsNews = () => {
-  const [news, setNews] = useState();
+  const [news, setNews] = useState([]);
   useEffect(() => {
     const fetchSportsNews=async()=>{
       const res= await fetch('/api/testing')
@@ -24,13 +24,14 @@ const SportsNews = () => {
   }, [])
   return (
     <Box color='white'>
-      {console.log(news)}
-    {
-      // news.map((newsItem) => {
-      //   console.log(newsItem)
-      //   // <Newscard news={newsItem} key={id}/>
-      // })
-    }
+      <Typography variant='h2'>SportsNews</Typography>
+      <Stack direction='row' flexWrap='wrap'>
+      {
+        news.map((newsItem,key) => {
+          return(<Newscard newsItem={newsItem} key={key}/>)
+        })
+      }
+      </Stack>
     </Box>
 
   );

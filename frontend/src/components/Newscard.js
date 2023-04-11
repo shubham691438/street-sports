@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function NewsCard({news}) {
+export default function NewsCard({newsItem}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -46,13 +46,13 @@ export default function NewsCard({news}) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={news.title}
-        subheader={news.pubDate}
+        title={newsItem.title}
+        subheader={newsItem.pubDate}
       />
       <CardMedia
         component="img"
         height="194"
-        image={news.image}
+        image={newsItem.image}
         alt="Paella dish"
       />
       <CardContent>
