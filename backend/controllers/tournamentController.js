@@ -40,8 +40,11 @@ const createTournament=async(req,res)=>{
     try{
         var tournament = await new Tournament({
             name: req.body.name,
+            description:req.body.description,
+            sport:req.body.sport,
             poster: req.body.poster,
-            place: req.body.place,
+            district: req.body.district,
+            state: req.body.state,
             schedule: {
                 start_date: req.body.schedule.start_date,
                 end_date: req.body.schedule.end_date,
@@ -63,14 +66,13 @@ const createTournament=async(req,res)=>{
                 registered: req.body.participants.registered,
                 waiting_list: req.body.participants.waiting_list
             },
-            rules: {
-                participation_fee: req.body.rules.participation_fee,
-                eligibility_criteria: req.body.rules.eligibility_criteria,
-                prize_pool: {
-                    first_place: req.body.rules.prize_pool["first_place"],
-                    second_place: req.body.rules.prize_pool["second_place"],
-                    third_place: req.body.rules.prize_pool["third_place"]
-                }
+            rules:req.body.rules,
+            eligibility_criteria:req.body.eligibility_criteria,
+            participation_fee:req.body.participation_fee,
+            prize_pool:{
+                first_place: req.body.prize_pool["first_place"],
+                second_place: req.body.prize_pool["second_place"],
+                third_place: req.body.prize_pool["third_place"]
             },
             audience: {
                 no_of_audience: req.body.audience.no_of_audience,
