@@ -4,6 +4,7 @@ import React from "react";
 import EventsCarousal from '../components/EventsCarousel'
 import heroImg from "../assets/images/cricket-tournament.png";
 import CustomButton from "../components/CustomButton";
+import TournamentsSection from "../components/TournamentsSection";
 
 const Hero = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
@@ -81,6 +82,7 @@ const Hero = () => {
         </CustomBox>
       </Container>
       <EventsCarousal/>
+      <TournamentsSection/>
     </Box>
   );
 };
