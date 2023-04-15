@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Tournament = require('../models/TournamentModel')
+const {Tournament,Participant} = require('../models/TournamentModel')
 
 //to get all the tournaments
 const getTournaments = async(req,res)=>{
@@ -38,7 +38,7 @@ const getTournament =async(req,res)=>{
 //to post a new tournament
 const createTournament=async(req,res)=>{
     try{
-        var tournament = await new Tournament({
+        var tournament = new Tournament({
             name: req.body.name,
             description:req.body.description,
             sport:req.body.sport,
@@ -64,7 +64,6 @@ const createTournament=async(req,res)=>{
             participants: {
                 total: req.body.participants.total,
                 registered: req.body.participants.registered,
-                waiting_list: req.body.participants.waiting_list
             },
             rules:req.body.rules,
             eligibility_criteria:req.body.eligibility_criteria,
@@ -133,11 +132,80 @@ const updateTournament= async(req,res)=>{
     res.status(200).json({msg:"tounament Updated successfully"})
 }
 
+//register user for a tournament
+const addParticipant=async(req,res)=>{
+    try {
+        // create a new participant in the participants collection
+        const participant = new Participant({
+            name:req.body.name,
+            email:req.body.email,
+            phone:req.body.phone,
+            rating:req.body.rating,
+            reviews:req.body.reviews,
+            photo:req.body.photo,
+            tournament_id:req.body.tournament_id
+        });
+
+        await participant.save();
+    
+        // add the participant's id to the tournament's participants array
+        const tournament = await Tournament.findByIdAndUpdate(
+          req.body.tournament_id,
+          { $push: { "participants.registered": participant._id } },
+          { new: true }
+        );
+    
+        // send a success response with the updated tournament document
+        res.status(200).json({ message: 'Participant registered for tournament successfully', tournament });
+      } catch (err) {
+        console.error('Error:', err);
+    
+        // send an error response
+        res.status(500).json({ error: err });
+      }
+}
+
+//check registration status of a user for a tournament
+const checkRegistrationStatus=async(req,res)=>{
+    const tournament_id=req.body.tournament_id;
+    const email=req.body.email;
+
+    try{
+        const tournament=await Tournament.findById(tournament_id).populate('participants.registered')
+        const registeredUsers=tournament.participants.registered
+
+        var isRegistered=false
+        registeredUsers.map((user)=>{
+            if(user.email==email)
+            {
+                isRegistered=true
+            }
+        })
+
+        if(isRegistered)
+        {
+            res.status(200).json({msg:"isRegistered"})
+        }
+        else
+        {
+            res.status(200).json({msg:"isNotRegistered"})
+        }
+        
+    }
+    catch(err)
+    {
+        res.status(500).json({error:err.message});
+    }
+    
+}
+
 
 module.exports={
     getTournaments,
     getTournament,
     createTournament,
     deleteTournament,
-    updateTournament
+    updateTournament,
+    addParticipant,
+    checkRegistrationStatus
 }
