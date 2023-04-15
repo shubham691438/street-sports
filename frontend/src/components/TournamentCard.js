@@ -1,6 +1,6 @@
 import { Grid,Button,CardActionArea, Stack ,Chip, IconButton} from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -10,11 +10,20 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import TournamentCup from '../assets/images/tournament-cup.jpg'
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import { Link } from 'react-router-dom';
+import { BorderColor } from '@mui/icons-material';
 
-const TournamentCard = ({tournament}) => {
+const TournamentCard = ({tournament,setCurrentTournament}) => {
+  const [selected,setSelected]=useState(false)
+
+  const handleClick=()=>{
+    setSelected(true)
+    setCurrentTournament(tournament);
+  }
   return (
-    <Box mx='10px' marginBottom='5px'>
-       <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%',objectFit:'fill'}}>
+    <Box mx='10px' marginBottom='5px' style={{ border: selected ? '2px solid white' : 'none' }}>
+      <Link to='#' style={{color: "inherit",textDecoration:"none"}}>
+       <Card onClick={handleClick} onBlur={()=>{setSelected(false)}} sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%',objectFit:'fill'}}>
           <CardActionArea>
           <CardContent>
               <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"} }}>{tournament.name}</Typography>
@@ -25,7 +34,7 @@ const TournamentCard = ({tournament}) => {
                 component="img"
                 height="194"
                 image={TournamentCup}
-                alt="Chess"
+                alt="cup"
                 sx={{objectFit:'fill',marginTop:"10px"}}
                 
               />
@@ -42,6 +51,7 @@ const TournamentCard = ({tournament}) => {
           </CardContent>
           </CardActionArea>
       </Card>
+      </Link>
     </Box>                
   )
 }
