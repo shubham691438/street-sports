@@ -7,6 +7,10 @@ import CustomButton from "../components/CustomButton";
 import TournamentsSection from "../components/TournamentsSection";
 
 const Hero = () => {
+
+  const handleClick=()=>{
+    window.scrollTo(0, 1200);
+  }
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
@@ -62,12 +66,14 @@ const Hero = () => {
               color="#fff"
               buttonText="Explore Now"
               heroBtn={true}
+              onClickFunction={handleClick}
             />
             <CustomButton
               backgroundColor="#3392FF"
               color="#fff"
               buttonText="Organise Tournaments"
               heroBtn={true}
+              
             />
             </Stack>
           </Box>

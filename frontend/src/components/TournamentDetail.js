@@ -1,6 +1,6 @@
 import { Grid,Button,CardActionArea, Stack ,Chip, IconButton, Divider, Paper} from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -19,8 +19,69 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import MilitaryTechTwoToneIcon from '@mui/icons-material/MilitaryTechTwoTone';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const TournamentDetail = ({tournament}) => {
+const TournamentDetail = ({tournament,selected,isRegistered,setIsRegistered}) => {
+  const {user}=useAuthContext()
+  const navigate=useNavigate()
+  
+
+  useEffect(()=>{
+    const checkRegistrationStatus=async()=>{
+      const response = await fetch('/api/tournaments/registration-status', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          tournament_id:tournament._id,
+          email:user.email,
+        })
+      })
+      const json = await response.json()
+      console.log(json)
+
+      if(json.msg=="isRegistered")
+        setIsRegistered(true)
+      else
+      {
+        setIsRegistered(false)
+      }  
+    }
+
+    if(user)
+    {
+      checkRegistrationStatus()
+    }
+
+  },[selected])
+
+  const handleRegistration= ()=>{
+
+    // {console.log(user)}
+    const register=async()=>{
+      const response = await fetch('/api/tournaments/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          name:user.name,
+          email:user.email,
+          tournament_id:tournament._id
+        })
+      })
+      const json = await response.json()
+      // console.log(json)
+      setIsRegistered(true)
+    }
+
+    if(user){
+      register();
+    }
+    else
+    {
+      navigate('/login')
+    }
+    
+  }
     
   return (
     <Box mx='10px' marginBottom='5px'>
@@ -44,8 +105,9 @@ const TournamentDetail = ({tournament}) => {
               <CustomButton
               backgroundColor="#3392FF"
               color="#fff"
-              buttonText="Register"
+              buttonText={isRegistered?"You are Registered":"Register"}
               heroBtn={true}
+              onClickFunction={handleRegistration}
             />
             </Stack>
             <Stack direction='row' mt={3} justifyContent='space-between'>
