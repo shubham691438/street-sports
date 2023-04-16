@@ -83,7 +83,9 @@ const createTournament=async(req,res)=>{
         res.status(200).json({msg:"tournmanents details added successfully"})
     }
     catch(err){
-        res.status(500).json({error:err.message})
+       
+            res.status(500).json({error:"all star maked  field must with filled correctly"})
+        
     }
    
 }

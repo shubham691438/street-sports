@@ -55,7 +55,7 @@ const tournamentSchema = new Schema({
     third_place: Number
   },
   audience: {
-    no_of_audience: { type: Number, required: false },
+    no_of_audience: Number,
     fee: { type: Number, required: false }
   }
   
