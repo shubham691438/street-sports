@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
+import CustomButton  from '../components/CustomButton'
 
 const NavBar = () => {
   const {logout} = useLogout()
@@ -34,7 +35,12 @@ const NavBar = () => {
               
               {user &&
               <Stack direction='row' spacing={2}>
-                <NavLink to='/profile' style={{color: "inherit",textDecoration:"none"}}><Button fontSize='20px' fontWeight={500} variant='contained'>Profile</Button></NavLink>
+                <NavLink to='/profile' style={{color: "inherit",textDecoration:"none"}}><CustomButton
+                  backgroundColor="#3392FF"
+                  color="#fff"
+                  buttonText={user.name}
+                  heroBtn={true}
+            /></NavLink>
                 <Button onClick={()=>{logout(); navigate('/')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
               </Stack>}
 
