@@ -7,24 +7,6 @@ const reviewSchema = new Schema({
   comment: { type: String, required: true }
 });
 
-const participantSchema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String, required: false },
-  rating: { type: Number, required: false },
-  reviews: [reviewSchema],
-  photo: { type: String, required: false }
-});
-
-const rulesSchema = new Schema({
-  participation_fee: { type: Number, required: false },
-  eligibility_criteria: { type: String, required: false },
-  prize_pool: {
-    first_place: { type: String, required: false },
-    second_place: { type: String, required: false },
-    third_place: { type: String, required: false }
-  }
-});
 
 const scheduleSchema = new Schema({
   start_date: { type: Date, required: true },
@@ -47,26 +29,55 @@ const organizerSchema = new Schema({
 });
 
 const participantsSchema = new Schema({
-  total: { type: Number, required: true },
-  registered: [participantSchema],
-  waiting_list: [participantSchema]
+  total: { type: Number, required: false },
+  registered: [{
+    type:Schema.Types.ObjectId,
+    ref:'Participant'
+  }],
 });
 
 const tournamentSchema = new Schema({
   name: { type: String, required: true },
+  description:{type:String,required: true},
+  sport:{type: String, required: true},
   poster: { type: String, required: false },
-  place: { type: String, required: true },
+  district: { type: String, required: false },
+  state: { type: String, required: true },
   schedule: scheduleSchema,
   organizer: organizerSchema,
   participants: participantsSchema,
-  rules: rulesSchema,
+  rules: [String],
+  eligibility_criteria:{ type: String, required: false },
+  participation_fee:{ type: Number, required: true },
+  prize_pool: {
+    first_place: Number,
+    second_place: Number,
+    third_place: Number
+  },
   audience: {
-    no_of_audience: { type: Number, required: false },
+    no_of_audience: Number,
     fee: { type: Number, required: false }
   }
   
 },{timestamps:true});
 
-const Tournament = mongoose.model('Tournament', tournamentSchema);
 
-module.exports = Tournament;
+const participantSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: false },
+  rating: { type: Number, required: false },
+  reviews: [reviewSchema],
+  photo: { type: String, required: false },
+  tournament_id:{
+    type:Schema.Types.ObjectId,
+    ref:'Tournament',
+    required:true
+  }
+});
+
+
+const Tournament = mongoose.model('Tournament', tournamentSchema);
+const Participant=mongoose.model('Participant',participantSchema);
+
+module.exports = {Tournament,Participant};

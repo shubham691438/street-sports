@@ -30,7 +30,7 @@ export default function Signup() {
     //   email: data.get('email'),
     //   password: data.get('password'),
     // });
-    await signup(data.get('email'),data.get('password'))
+    await signup(data.get('firstName'),data.get('lastName'),data.get('email'),data.get('password'))
   };
 
   return (
@@ -53,7 +53,7 @@ export default function Signup() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
@@ -73,7 +73,7 @@ export default function Signup() {
                   name="lastName"
                   autoComplete="family-name"
                 />
-              </Grid> */}
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required

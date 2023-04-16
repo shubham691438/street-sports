@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Tournament = require('../models/TournamentModel')
+const {Tournament,Participant} = require('../models/TournamentModel')
 
 //to get all the tournaments
 const getTournaments = async(req,res)=>{
@@ -38,10 +38,13 @@ const getTournament =async(req,res)=>{
 //to post a new tournament
 const createTournament=async(req,res)=>{
     try{
-        var tournament = await new Tournament({
+        var tournament = new Tournament({
             name: req.body.name,
+            description:req.body.description,
+            sport:req.body.sport,
             poster: req.body.poster,
-            place: req.body.place,
+            district: req.body.district,
+            state: req.body.state,
             schedule: {
                 start_date: req.body.schedule.start_date,
                 end_date: req.body.schedule.end_date,
@@ -61,16 +64,14 @@ const createTournament=async(req,res)=>{
             participants: {
                 total: req.body.participants.total,
                 registered: req.body.participants.registered,
-                waiting_list: req.body.participants.waiting_list
             },
-            rules: {
-                participation_fee: req.body.rules.participation_fee,
-                eligibility_criteria: req.body.rules.eligibility_criteria,
-                prize_pool: {
-                    first_place: req.body.rules.prize_pool["first_place"],
-                    second_place: req.body.rules.prize_pool["second_place"],
-                    third_place: req.body.rules.prize_pool["third_place"]
-                }
+            rules:req.body.rules,
+            eligibility_criteria:req.body.eligibility_criteria,
+            participation_fee:req.body.participation_fee,
+            prize_pool:{
+                first_place: req.body.prize_pool["first_place"],
+                second_place: req.body.prize_pool["second_place"],
+                third_place: req.body.prize_pool["third_place"]
             },
             audience: {
                 no_of_audience: req.body.audience.no_of_audience,
@@ -82,7 +83,9 @@ const createTournament=async(req,res)=>{
         res.status(200).json({msg:"tournmanents details added successfully"})
     }
     catch(err){
-        res.status(500).json({error:err.message})
+       
+            res.status(500).json({error:"all star maked  field must with filled correctly"})
+        
     }
    
 }
@@ -131,11 +134,80 @@ const updateTournament= async(req,res)=>{
     res.status(200).json({msg:"tounament Updated successfully"})
 }
 
+//register user for a tournament
+const addParticipant=async(req,res)=>{
+    try {
+        // create a new participant in the participants collection
+        const participant = new Participant({
+            name:req.body.name,
+            email:req.body.email,
+            phone:req.body.phone,
+            rating:req.body.rating,
+            reviews:req.body.reviews,
+            photo:req.body.photo,
+            tournament_id:req.body.tournament_id
+        });
+
+        await participant.save();
+    
+        // add the participant's id to the tournament's participants array
+        const tournament = await Tournament.findByIdAndUpdate(
+          req.body.tournament_id,
+          { $push: { "participants.registered": participant._id } },
+          { new: true }
+        );
+    
+        // send a success response with the updated tournament document
+        res.status(200).json({ message: 'Participant registered for tournament successfully', tournament });
+      } catch (err) {
+        console.error('Error:', err);
+    
+        // send an error response
+        res.status(500).json({ error: err });
+      }
+}
+
+//check registration status of a user for a tournament
+const checkRegistrationStatus=async(req,res)=>{
+    const tournament_id=req.body.tournament_id;
+    const email=req.body.email;
+
+    try{
+        const tournament=await Tournament.findById(tournament_id).populate('participants.registered')
+        const registeredUsers=tournament.participants.registered
+
+        var isRegistered=false
+        registeredUsers.map((user)=>{
+            if(user.email==email)
+            {
+                isRegistered=true
+            }
+        })
+
+        if(isRegistered)
+        {
+            res.status(200).json({msg:"isRegistered"})
+        }
+        else
+        {
+            res.status(200).json({msg:"isNotRegistered"})
+        }
+        
+    }
+    catch(err)
+    {
+        res.status(500).json({error:err.message});
+    }
+    
+}
+
 
 module.exports={
     getTournaments,
     getTournament,
     createTournament,
     deleteTournament,
-    updateTournament
+    updateTournament,
+    addParticipant,
+    checkRegistrationStatus
 }

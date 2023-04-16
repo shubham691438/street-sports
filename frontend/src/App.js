@@ -8,6 +8,7 @@ import AboutUs from './pages/AboutUs'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile.js'
+import OrganiseTournament from './pages/OrganiseTournament'
 import {useAuthContext} from './hooks/useAuthContext'
 import { Navigate } from 'react-router-dom'
 import './App.css';
@@ -30,6 +31,10 @@ function App() {
             {
                 path:'/tournaments',
                 element:<Tournaments/>
+            },
+            {
+                path:'/organise-tournament',
+                element:!user?<Login/>:<OrganiseTournament/>
             },
             {
                 path:'/learn',

@@ -4,8 +4,16 @@ import React from "react";
 import EventsCarousal from '../components/EventsCarousel'
 import heroImg from "../assets/images/cricket-tournament.png";
 import CustomButton from "../components/CustomButton";
+import TournamentsSection from "../components/TournamentsSection";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+
+  const navigate=useNavigate();
+
+  const handleClick=()=>{
+    window.scrollTo(0, 1200);
+  }
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
@@ -61,12 +69,14 @@ const Hero = () => {
               color="#fff"
               buttonText="Explore Now"
               heroBtn={true}
+              onClickFunction={handleClick}
             />
             <CustomButton
               backgroundColor="#3392FF"
               color="#fff"
               buttonText="Organise Tournaments"
               heroBtn={true}
+              onClickFunction={()=>{navigate('/organise-tournament')}}
             />
             </Stack>
           </Box>
@@ -81,6 +91,7 @@ const Hero = () => {
         </CustomBox>
       </Container>
       <EventsCarousal/>
+      <TournamentsSection/>
     </Box>
   );
 };
