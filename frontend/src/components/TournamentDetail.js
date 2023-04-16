@@ -27,33 +27,7 @@ const TournamentDetail = ({tournament,selected,isRegistered,setIsRegistered}) =>
   const navigate=useNavigate()
   
 
-  useEffect(()=>{
-    const checkRegistrationStatus=async()=>{
-      const response = await fetch('/api/tournaments/registration-status', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          tournament_id:tournament._id,
-          email:user.email,
-        })
-      })
-      const json = await response.json()
-      console.log(json)
-
-      if(json.msg=="isRegistered")
-        setIsRegistered(true)
-      else
-      {
-        setIsRegistered(false)
-      }  
-    }
-
-    if(user)
-    {
-      checkRegistrationStatus()
-    }
-
-  },[selected])
+  
 
   const handleRegistration= ()=>{
 

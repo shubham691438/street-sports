@@ -5,8 +5,11 @@ import EventsCarousal from '../components/EventsCarousel'
 import heroImg from "../assets/images/cricket-tournament.png";
 import CustomButton from "../components/CustomButton";
 import TournamentsSection from "../components/TournamentsSection";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+
+  const navigate=useNavigate();
 
   const handleClick=()=>{
     window.scrollTo(0, 1200);
@@ -73,7 +76,7 @@ const Hero = () => {
               color="#fff"
               buttonText="Organise Tournaments"
               heroBtn={true}
-              
+              onClickFunction={()=>{navigate('/organise-tournament')}}
             />
             </Stack>
           </Box>
