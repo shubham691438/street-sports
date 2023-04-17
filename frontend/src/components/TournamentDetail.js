@@ -2,16 +2,12 @@ import { Grid,Button,CardActionArea, Stack ,Chip, IconButton, Divider, Paper} fr
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import TournamentCup from '../assets/images/tournament-cup.jpg'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomButton from './CustomButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
