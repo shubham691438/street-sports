@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const {Tournament,Participant} = require('../models/TournamentModel')
+const User=require('../models/UserModel')
 
 //to get all the tournaments
 const getTournaments = async(req,res)=>{
@@ -135,56 +136,59 @@ const updateTournament= async(req,res)=>{
 }
 
 //register user for a tournament
-const addParticipant=async(req,res)=>{
+const registerUserForTournament=async(req,res)=>{
     try {
-        // create a new participant in the participants collection
-        const participant = new Participant({
-            name:req.body.name,
-            email:req.body.email,
-            phone:req.body.phone,
-            rating:req.body.rating,
-            reviews:req.body.reviews,
-            photo:req.body.photo,
-            tournament_id:req.body.tournament_id
-        });
 
-        await participant.save();
-    
-        // add the participant's id to the tournament's participants array
-        const tournament = await Tournament.findByIdAndUpdate(
-          req.body.tournament_id,
-          { $push: { "participants.registered": participant._id } },
+        const tournament_id=req.body.tournament_id
+        const user_id=req.body.user_id
+        
+        //checking if user is already registerered for tournamnent
+        const tournament=await Tournament.findById(tournament_id)
+        const registeredUsers=tournament.participants.registered
+        
+        if(registeredUsers.includes(user_id))
+        {
+            throw Error("User already registered for the tournament")
+        }
+
+        // add the user's id to the tournament's participants array
+         await Tournament.findByIdAndUpdate(
+          tournament_id,
+          { $push: { "participants.registered": user_id} },
           { new: true }
         );
+
+        //add the tournament 's id into user data
+        await User.findByIdAndUpdate(
+            user_id,
+            {
+                $push:{"current_tournament_id":tournament_id}
+            },
+            {new:true}
+        )
     
         // send a success response with the updated tournament document
-        res.status(200).json({ message: 'Participant registered for tournament successfully', tournament });
+        res.status(200).json({ message: 'User registered for tournament successfully',tournament});
       } catch (err) {
         console.error('Error:', err);
     
         // send an error response
-        res.status(500).json({ error: err });
+        res.status(500).json({ error: err.message });
       }
 }
 
 //check registration status of a user for a tournament
 const checkRegistrationStatus=async(req,res)=>{
-    const tournament_id=req.body.tournament_id;
-    const email=req.body.email;
+    try {
 
-    try{
-        const tournament=await Tournament.findById(tournament_id).populate('participants.registered')
+        const tournament_id=req.body.tournament_id
+        const user_id=req.body.user_id
+        
+        //checking if user is already registerered for tournamnent
+        const tournament=await Tournament.findById(tournament_id)
         const registeredUsers=tournament.participants.registered
-
-        var isRegistered=false
-        registeredUsers.map((user)=>{
-            if(user.email==email)
-            {
-                isRegistered=true
-            }
-        })
-
-        if(isRegistered)
+        
+        if(registeredUsers.includes(user_id))
         {
             res.status(200).json({msg:"isRegistered"})
         }
@@ -192,13 +196,28 @@ const checkRegistrationStatus=async(req,res)=>{
         {
             res.status(200).json({msg:"isNotRegistered"})
         }
-        
+    }
+    catch(e){
+        res.status(500).json({error:err.message})
+    }
+    
+}
+
+
+//send an array of tournaments in which user is taking part
+const getCurrentTournaments=async(req,res)=>{
+
+    const user_id=req.body.user_id
+    try{
+         const user=await User.findById(user_id).populate('current_tournament_id')
+         const currentTournaments=user.current_tournament_id
+         
+         res.status(200).json(currentTournaments)
     }
     catch(err)
     {
-        res.status(500).json({error:err.message});
+        res.status(500).json({error:err.message})
     }
-    
 }
 
 
@@ -208,6 +227,7 @@ module.exports={
     createTournament,
     deleteTournament,
     updateTournament,
-    addParticipant,
-    checkRegistrationStatus
+    registerUserForTournament,
+    checkRegistrationStatus,
+    getCurrentTournaments
 }

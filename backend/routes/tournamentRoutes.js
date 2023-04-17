@@ -6,8 +6,9 @@ const {
     createTournament,
     deleteTournament,
     updateTournament,
-    addParticipant,
+    registerUserForTournament,
     checkRegistrationStatus,
+    getCurrentTournaments
  } =require('../controllers/tournamentController.js') 
 
 //post request to create new tournament
@@ -20,6 +21,13 @@ router.get('/',getTournaments)
 //check registration status of a user for a tournament
 router.post('/registration-status',checkRegistrationStatus)
 
+//register user for a tournament
+ // id is tournament id 
+ router.patch('/register',registerUserForTournament)
+
+ //send an array of tournaments in which user is taking part
+ router.post('/current-tournaments',getCurrentTournaments)
+
  //to get one tournament by id
 router.get('/:id',getTournament)
 
@@ -31,9 +39,7 @@ router.get('/:id',getTournament)
  router.patch('/:id',updateTournament)
 
 
- //register user for a tournament
- // id is tournament id 
- router.post('/register',addParticipant)
+ 
 
 
 

@@ -5,14 +5,20 @@ const validator = require('validator')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     required: false,
   },
-  lastName: {
-    type: String,
-    required: false,
-  },
+  profile_img:{
+    data: Buffer,
+    contentType: String
+},
+  about_me:String,
+  district:String,
+  state:String,
+  gender:String,
+  dob:Number,
+  phone_no:Number,
   email: {
     type: String,
     required: true,
@@ -21,15 +27,34 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  social_media:{
+    facebook:String,
+    instagram:String,
+    twitter:String
+  },
+  current_tournament_id:[{
+    type:Schema.Types.ObjectId,
+    ref:'Tournament',
+    required:false,
+  }],
+  previous_tournament_id:[{
+    type:Schema.Types.ObjectId,
+    ref:'Tournament',
+    required:false
+  }],
+
 })
 
 // static signup method
-userSchema.statics.signup = async function(firstName,lastName,email, password) {
+userSchema.statics.signup = async function(name,district,state,gender,dob,phone_no,email,password) {
 
   // validation
-  if (!email || !password || !firstName || !lastName) {
-    throw Error('All fields must be filled')
+  if (!name) {
+    throw Error('Name is required')
+  }
+  if(!email){
+    throw Error('Email is required')
   }
   if (!validator.isEmail(email)) {
     throw Error('Email not valid')
@@ -41,6 +66,13 @@ userSchema.statics.signup = async function(firstName,lastName,email, password) {
   {
     throw Error("minimum length of password should be 6")
   }
+  if(phone_no)
+  {
+    if(phone_no.length<10)
+    {
+      throw Error("minimum length of password should be 10")
+    }
+  }
 
   const exists = await this.findOne({ email })
 
@@ -51,7 +83,7 @@ userSchema.statics.signup = async function(firstName,lastName,email, password) {
   const salt = await bcrypt.genSalt(10)
   const hash = await bcrypt.hash(password, salt)
 
-  const user = await this.create({ firstName,lastName,email, password: hash })
+  const user = await this.create({ name,district,state,gender,dob,phone_no,email, password: hash })
 
   return user
 }
@@ -65,7 +97,7 @@ userSchema.statics.login = async function(email, password) {
 
   const user = await this.findOne({ email })
   if (!user) {
-    throw Error('Incorrect email')
+    throw Error('email is not signed up')
   }
 
   const match = await bcrypt.compare(password, user.password)
