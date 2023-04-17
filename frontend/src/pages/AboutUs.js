@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 
 const AboutUs = () => {
-  let message = `There are many variations of passages of Lorem Ipsum available but the \n majority have suffered alteration in some injected humour.`;
+  let message = ``;
   return (
     <Box color='white'>
         <div class="container">
@@ -24,7 +24,7 @@ const AboutUs = () => {
                <img src="https://media.licdn.com/dms/image/C5603AQFxFx4ALwrtWA/profile-displayphoto-shrink_400_400/0/1667883049367?e=1687392000&v=beta&t=WRd9wo2xhRZ3SuhPoD-JJ3COtAiH4iV518WWGDXTgLY" class="team-img" alt="pic" />                   
                <h3>SHUBHAM SINGH</h3>            
                <div className="team-info"><p>MERN Stack Developer</p></div>
-               <p>Shubham Singh is our  co-founder and has developed Home page and Tournament Sections.</p>
+               <p>Shubham Singh is our  co-founder </p>
            
               
                
