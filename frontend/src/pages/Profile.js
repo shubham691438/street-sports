@@ -14,40 +14,14 @@ const Profile = () => {
   const [selected,setSelected]=useState(false)
   const [isRegistered,setIsRegistered]=useState(false)
   
-  useEffect(()=>{
-    const checkRegistrationStatus=async()=>{
-      const response = await fetch('/api/tournaments/registration-status', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          tournament_id:currentTournament._id,
-          email:user.email,
-        })
-      })
-      const json = await response.json()
-      console.log(json)
-
-      if(json.msg=="isRegistered")
-        setIsRegistered(true)
-      else
-      {
-        setIsRegistered(false)
-      }  
-    }
-
-    if(user)
-    {
-      checkRegistrationStatus()
-    }
-
-  },[currentTournament])
  
 
   useEffect(()=>{
-    const fetchTournaments=async()=>{
-      const res= await fetch('/api/tournaments',{
-        method: 'GET',
+    const fetchCurrentTournaments=async()=>{
+      const res= await fetch('/api/tournaments/current-tournaments',{
+        method: 'POST',
         headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify({user_id:user.user_id})
       })
   
       const json= await res.json();
@@ -56,38 +30,38 @@ const Profile = () => {
       
     }
 
-    fetchTournaments()
+    fetchCurrentTournaments()
   },[])
 
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    const fetchProfile=async()=>{
-      const res=await fetch('/api/user/profile',{
-        headers:{
-          'Authorization':`Bearer ${user.token}`
-        }
-      })
+  //   const fetchProfile=async()=>{
+  //     const res=await fetch('/api/user/profile',{
+  //       headers:{
+  //         'Authorization':`Bearer ${user.token}`
+  //       }
+  //     })
 
-      const data= await res.json() 
-      setMsg(data.msg);
+  //     const data= await res.json() 
+  //     setMsg(data.msg);
 
-      //  if(res.ok)
-      //  {
+  //     //  if(res.ok)
+  //     //  {
         
-      //  }
-      }
+  //     //  }
+  //     }
 
-    if(user)
-    {
-      fetchProfile()
-    }
-    else
-    {
-      setMsg(null)
-    }
+  //   if(user)
+  //   {
+  //     fetchProfile()
+  //   }
+  //   else
+  //   {
+  //     setMsg(null)
+  //   }
 
-  },[user])
+  // },[user])
 
   return (
     <Box sx={{margin:{xs:"80px 10%",sm:"10% 10%"}}}  mt="100px">
@@ -99,7 +73,7 @@ const Profile = () => {
           sx={{ width:{xs:'80px',sm:"150px",lg:'200px'}, height: {xs:'80px',sm:"150px",lg:'200px'} , margin:'auto', position:'absolute',top:{lg:"-150px" ,sm:"-100px",xs:"-60px"}}}
         />
         <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem", md:"2rem"}, marginTop:{xs:"20px",sm:"50px"} }}>{user.name}</Typography>
-        <Typography sx={{fontFamily:"sans-serif" , color:'white'}} >Jamshedpur, Jharkhand  </Typography>
+        <Typography sx={{fontFamily:"sans-serif" , color:'white'}} >{user.district}, {user.state}</Typography>
         </Stack>
         <Paper elevation={8} sx={{backgroundColor:"#25272e", marginTop:"20px"}}>
             <Typography fontWeight={{sm:'bold'}} sx={{fontFamily:"sans-serif" , color:'white', padding:"15px"}}>I have a deep passion for sports and thrive on the thrill of competition. Over the years, I have participated in several
@@ -114,22 +88,22 @@ const Profile = () => {
       <Stack>
        <Box>
       <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>Gender</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
-      <Typography component='span' color='white' fontWeight='bold'>Male</Typography>
+      <Typography component='span' color='white' fontWeight='bold'>{user.gender}</Typography>
       </Box> 
 
       <Box>
-      <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>Age</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
-      <Typography component='span' color='white' fontWeight='bold'>19 Years</Typography>
+      <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>Date of Birth</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
+      <Typography component='span' color='white' fontWeight='bold'>{user.dob}</Typography>
       </Box>
 
       <Box>
       <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>Email</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
-      <Typography component='span' color='white' fontWeight='bold'>ayush@gmail.com</Typography>
+      <Typography component='span' color='white' fontWeight='bold'>{user.email}</Typography>
       </Box>
 
       <Box>
-      <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>phone:</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
-      <Typography component='span' color='white' fontWeight='bold'>8875284384</Typography>
+      <Typography component='span' color='#1adaa7' fontSize='20px' fontWeight='bold'>phone Number:</Typography><IconButton><ArrowRightAltIcon sx={{color:'#1adaa7'}} fontSize='large'/></IconButton>
+      <Typography component='span' color='white' fontWeight='bold'>{user.phone_no}</Typography>
       </Box>
 
       </Stack>  
@@ -140,7 +114,7 @@ const Profile = () => {
         <Grid container spacing={2} sx={{marginTop:"10px"}}>
           
           {
-              tournaments.slice(3,5).map((tournament,key)=>{
+              tournaments.slice(0,2).map((tournament,key)=>{
                 return(<Grid item md={6} xs={12}><TournamentCard tournament={tournament} key={key} setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Grid>)
               })
             }
@@ -154,7 +128,7 @@ const Profile = () => {
         <Grid container spacing={2} sx={{marginTop:"10px"}}>
           
           {
-              tournaments.slice(0,4).map((tournament,key)=>{
+              tournaments.slice(2,3).map((tournament,key)=>{
                 return(<Grid item md={6} xs={12}><TournamentCard tournament={tournament} key={key} setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Grid>)
               })
             }

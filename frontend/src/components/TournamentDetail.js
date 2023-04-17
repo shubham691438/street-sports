@@ -30,12 +30,11 @@ const TournamentDetail = ({tournament,selected,isRegistered,setIsRegistered}) =>
     // {console.log(user)}
     const register=async()=>{
       const response = await fetch('/api/tournaments/register', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          name:user.name,
-          email:user.email,
-          tournament_id:tournament._id
+          tournament_id:tournament._id,
+          user_id:user.user_id
         })
       })
       const json = await response.json()

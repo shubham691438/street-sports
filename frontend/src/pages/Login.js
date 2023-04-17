@@ -1,4 +1,3 @@
-import { useState } from 'react'; 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,8 +18,7 @@ import { useLogin } from '../hooks/useLogin';
 const theme = createTheme();
 
 export default function Login() {
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
+  
   const {login,error,isLoading}=useLogin()
 
   const handleSubmit = async(event) => {
@@ -61,6 +59,7 @@ export default function Login() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              defaultValue="shubham@gmail.com"
               autoFocus
             />
             <TextField
@@ -71,6 +70,7 @@ export default function Login() {
               label="Password"
               type="password"
               id="password"
+              defaultValue="123456"
               autoComplete="current-password"
             />
             <FormControlLabel

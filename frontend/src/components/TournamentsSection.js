@@ -1,4 +1,4 @@
-import { Box, Grid,Paper, Stack, TableContainer } from '@mui/material'
+import { Box, Grid, TableContainer } from '@mui/material'
 import React, { useEffect,useState } from 'react'
 import TournamentCard from './TournamentCard'
 import TournamentDetail from './TournamentDetail'
@@ -22,13 +22,13 @@ const TournamentsSection = () => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           tournament_id:currentTournament._id,
-          email:user.email,
+          user_id:user.user_id
         })
       })
       const json = await response.json()
       console.log(json)
 
-      if(json.msg=="isRegistered")
+      if(json.msg==="isRegistered")
         setIsRegistered(true)
       else
       {
@@ -36,7 +36,7 @@ const TournamentsSection = () => {
       }  
     }
 
-    if(user)
+    if(user&&currentTournament)
     {
       checkRegistrationStatus()
     }

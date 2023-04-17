@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,18 +18,14 @@ import { useSignup } from '../hooks/useSignup';
 const theme = createTheme();
 
 export default function Signup() {
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
+  
   const {signup,error,isLoading}=useSignup()
 
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
-    await signup(data.get('firstName'),data.get('lastName'),data.get('email'),data.get('password'))
+    
+    await signup(data.get('name'),data.get('district'),data.get('state'),data.get('gender'),data.get('dob'),data.get('phone_no'),data.get('email'),data.get('password'))
   };
 
   return (
@@ -53,36 +48,63 @@ export default function Signup() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  name="name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  label="Name"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="district"
+                  label="District"
+                  name="district"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  id="state"
+                  label="State"
+                  name="state"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  id="gender"
+                  label="Gender"
+                  name="gender"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  id="dob"
+                  label="Date of Birth (dd/mm/yy)"
+                  name="dob"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
                   id="email"
-                  type='email'
-                  label="Email Address"
+                  label="Email"
                   name="email"
-                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  id="phone_no"
+                  label="Phone Number"
+                  name="phone_no"
                 />
               </Grid>
               <Grid item xs={12}>
