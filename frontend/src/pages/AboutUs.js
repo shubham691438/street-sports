@@ -24,7 +24,7 @@ const AboutUs = () => {
                <img src="https://media.licdn.com/dms/image/C5603AQFxFx4ALwrtWA/profile-displayphoto-shrink_400_400/0/1667883049367?e=1687392000&v=beta&t=WRd9wo2xhRZ3SuhPoD-JJ3COtAiH4iV518WWGDXTgLY" class="team-img" alt="pic" />                   
                <h3>SHUBHAM SINGH</h3>            
                <div className="team-info"><p>MERN Stack Developer</p></div>
-               <p>Shubham Singh is our  co-founder and has developed Home page and Tournament Sections.</p>
+               <p className="paracolor">Shubham Singh is our  co-founder and has developed Home page and Tournament Sections.</p>
            
               
                
@@ -42,7 +42,7 @@ const AboutUs = () => {
                
                <div className="team-info"><p>Frontend Developer</p></div>
 
-               <p>Kishan Kumar is our co-founder and has developed Sports News page and About Us section.</p>
+               <p className="paracolor">Kishan Kumar is our co-founder and has developed Sports News page and About Us section.</p>
            
                
                
@@ -59,7 +59,7 @@ const AboutUs = () => {
                
                <div className="team-info"><p>Frontend Developer</p></div>
 
-               <p>Anish Kumar is our co-founder and has developed styling part of the page.</p>
+               <p className="paracolor">Anish Kumar is our co-founder and has developed styling part of the page.</p>
            
                
                
