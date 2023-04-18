@@ -24,24 +24,24 @@ const NavBar = () => {
 
             <Hidden mdDown>
               <Stack direction="row" spacing={{xs:0,lg:2}} alignContent="center" >
-                  <NavLink to='/'   style={{color: "inherit",textDecoration:"none"}}><Button color="inherit" >Home</Button></NavLink>
-                  <NavLink to='/tournaments' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Tournaments</Button></NavLink>
-                  <NavLink to='/learn ' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Learn</Button></NavLink>
-                  <NavLink to='/sports-news' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Sports News</Button></NavLink>
-                  <NavLink to='/about-us' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">About Us</Button></NavLink>
+                  <NavLink to=''   style={{color: "inherit",textDecoration:"none"}}><Button color="inherit" >Home</Button></NavLink>
+                  <NavLink to='tournaments' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Tournaments</Button></NavLink>
+                  <NavLink to='learn ' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Learn</Button></NavLink>
+                  <NavLink to='sports-news' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">Sports News</Button></NavLink>
+                  <NavLink to='about-us' style={{color: "inherit",textDecoration:"none"}}><Button color="inherit">About Us</Button></NavLink>
               </Stack>
 
-              {!user && <NavLink to='/login' style={{color: "inherit",textDecoration:"none"}}><Button sx={{backgroundColor:"#3392FF"}} variant='contained'><Typography  >Login</Typography></Button></NavLink>}
+              {!user && <NavLink to='login' style={{color: "inherit",textDecoration:"none"}}><Button sx={{backgroundColor:"#3392FF"}} variant='contained'><Typography  >Login</Typography></Button></NavLink>}
               
               {user &&
               <Stack direction='row' spacing={2}>
-                <NavLink to='/profile' style={{color: "inherit",textDecoration:"none"}}><CustomButton
+                <NavLink to='profile' style={{color: "inherit",textDecoration:"none"}}><CustomButton
                   backgroundColor="#3392FF"
                   color="#fff"
                   buttonText={user.name}
                   heroBtn={true}
             /></NavLink>
-                <Button onClick={()=>{logout(); navigate('/')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
+                <Button onClick={()=>{logout(); navigate('')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
               </Stack>}
 
           

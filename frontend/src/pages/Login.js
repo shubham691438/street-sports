@@ -96,7 +96,7 @@ export default function Login() {
               <Grid item>
               <Stack direction='row' spacing={1}>
                     <Typography>Don't have an account?</Typography>
-                    <Link to="/signup" >
+                    <Link to="signup" >
                     <Typography variant="body2" fontWeight='bold' fontSize='15px'>
                         Sign Up
                     </Typography>
