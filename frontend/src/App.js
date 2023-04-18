@@ -21,7 +21,7 @@ function App() {
   const {user}=useAuthContext();
   const Routes = [
     {
-        path:'/',
+        path:'/shubh',
         element: <Layout/>,
         children:[
             {
@@ -29,35 +29,35 @@ function App() {
                 element:<Home/>
             },
             {
-                path:'/tournaments',
+                path:'tournaments',
                 element:<Tournaments/>
             },
             {
-                path:'/organise-tournament',
+                path:'organise-tournament',
                 element:!user?<Login/>:<OrganiseTournament/>
             },
             {
-                path:'/learn',
+                path:'learn',
                 element:<Learn/>
             },
             {
-                path:'/sports-news',
+                path:'sports-news',
                 element:<SportsNews/>
             },
             {
-                path:'/about-us',
+                path:'about-us',
                 element:<AboutUs/>
             },
             {
-                path:'/signup',
+                path:'signup',
                 element:!user?<Signup/>:<Navigate to='/'/>
             },
             {
-                path:'/login',
+                path:'login',
                 element: !user?<Login/>:<Navigate to='/'/>
             },
             {
-                path:'/profile',
+                path:'profile',
                 element:<Profile/>
             },
         ]
