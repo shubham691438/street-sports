@@ -140,7 +140,7 @@ export default function Signup() {
 
                 <Stack direction='row' spacing={1}>
                     <Typography>Already have an account?</Typography>
-                    <Link to="/login" >
+                    <Link to="/shubh/login" >
                     <Typography variant="body2" fontWeight='bold' fontSize='15px'>
                         Login
                     </Typography>
