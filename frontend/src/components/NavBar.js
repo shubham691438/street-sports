@@ -41,7 +41,7 @@ const NavBar = () => {
                   buttonText={user.name}
                   heroBtn={true}
             /></NavLink>
-                <Button onClick={()=>{logout(); navigate('')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
+                <Button onClick={()=>{logout(); navigate('/shubh')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
               </Stack>}
 
           

@@ -50,11 +50,11 @@ function App() {
             },
             {
                 path:'signup',
-                element:!user?<Signup/>:<Navigate to='/'/>
+                element:!user?<Signup/>:<Navigate to='/shubh'/>
             },
             {
                 path:'login',
-                element: !user?<Login/>:<Navigate to='/'/>
+                element: !user?<Login/>:<Navigate to='/shubh'/>
             },
             {
                 path:'profile',
