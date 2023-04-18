@@ -42,7 +42,7 @@ const AboutUs = () => {
                
                <div className="team-info"><p>Frontend Developer</p></div>
 
-               <p>Kishan Kumar is our co-founder and has developed Sports News page and About Us section.</p>
+               <p className="paracolor">Kishan Kumar is our co-founder and has developed Sports News page and About Us section.</p>
            
                
                
@@ -59,7 +59,7 @@ const AboutUs = () => {
                
                <div className="team-info"><p>Frontend Developer</p></div>
 
-               <p>Anish Kumar is our co-founder and has developed styling part of the page.</p>
+               <p className="paracolor">Anish Kumar is our co-founder and has developed styling part of the page.</p>
            
                
                
