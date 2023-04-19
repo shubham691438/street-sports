@@ -54,7 +54,7 @@ const Hero = () => {
               Discover Your Next Challenge
             </Typography>
             <Title variant="h1">
-            Compete, Conquer, and Connect at Our Sports Tournaments
+            Compete, Conquer, and Connect 
             </Title>
             <Typography
               variant="body2"
@@ -68,14 +68,12 @@ const Hero = () => {
               backgroundColor="#3392FF"
               color="#fff"
               buttonText="Explore Now"
-              heroBtn={true}
               onClickFunction={handleClick}
             />
             <CustomButton
               backgroundColor="#3392FF"
               color="#fff"
               buttonText="Organise Tournaments"
-              heroBtn={true}
               onClickFunction={()=>{navigate('/shubh/organise-tournament')}}
             />
             </Stack>

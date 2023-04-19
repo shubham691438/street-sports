@@ -18,7 +18,7 @@ const IntroSection = () => {
                 <Typography variant='h5' fontWeight="500">SignUp Now</Typography>
                 </Button></Link>
             </Stack>
-            <Box component='img'  src={HeroImage} width='100%' height="auto" maxWidth={{xs:"400px",md:"600px"}}  alt='hero'/>
+            <Box component='img'  src={HeroImage} maxWidth={{xs:"300px",md:"500px",sm:'400px'}} sx={{margin:'auto'}}  alt='hero'/>
         </Stack>
     </Box>
   )

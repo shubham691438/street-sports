@@ -4,7 +4,7 @@ import StreetSportsLogo from '../assets/icons/streetSportsLogo.png'
 import { Stack } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -48,6 +48,17 @@ const NavBar = () => {
               
             </Hidden>
             <Hidden mdUp>
+              {
+                user &&
+                <Link to='/shubh/profile' style={{color: "inherit",textDecoration:"none"}}>
+                  <CustomButton
+                      backgroundColor="#3392FF"
+                      color="#fff"
+                      buttonText={user.name}
+                    />
+                </Link>
+              }
+            
               <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <>
@@ -55,11 +66,17 @@ const NavBar = () => {
                     <MenuIcon fontSize='large'></MenuIcon>
                   </IconButton>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Home</MenuItem>
-                    <MenuItem onClick={popupState.close}>Tournaments</MenuItem>
-                    <MenuItem onClick={popupState.close}>Learn</MenuItem>
-                    <MenuItem onClick={popupState.close}>Sports News</MenuItem>
-                    <MenuItem onClick={popupState.close}>Login</MenuItem>
+                    <Link to='/shubh' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Home</MenuItem></Link>
+                    <Link to='/shubh/tournaments' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Tournaments</MenuItem></Link>
+                    <Link to='/shubh/learn' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Learn</MenuItem></Link>
+                    <Link to='/shubh/sports-news' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Sports News</MenuItem></Link>
+                    {
+                      user && <Link onClick={()=>{logout(); navigate('/shubh')}} style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Logout</MenuItem></Link>
+                    }
+                    {
+                      !user && <Link to='/shubh/login'style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Login</MenuItem></Link>
+                    }
+                    
                   </Menu>
                 </>
               )}

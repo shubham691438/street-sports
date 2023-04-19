@@ -10,13 +10,15 @@ import TournamentCupImage from '../assets/images/tournament-cup.jpg'
 import CoachImage from '../assets/images/coach-image.png'
 import OrganiseSportImage from '../assets/images/organise-sport.jpg'
 import SportsNewsImage from '../assets/images/sports+news.jpg'
+import CustomButton from './CustomButton';
+import { Link } from 'react-router-dom';
 
 const Features = () => {
   return (
     <Box sx={{margin:"5% 5%"}}  mt="100px" >
         <Grid container spacing={5} justifyContent="space-between" alignItems="stretch" > 
             <Grid item xs={12} sm={6} lg={3}> 
-                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                <Box >
                     <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%',objectFit:'fill'}}>
                         <CardActionArea>
                         <CardMedia
@@ -36,14 +38,20 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button size="small" variant="contained">Share</Button>
-                            <Button size="small" variant="contained">Learn More</Button>
+                        <Link to='/shubh/tournaments' style={{color: "inherit",textDecoration:"none"}}>
+                            <CustomButton
+                                backgroundColor="#3392FF"
+                                color="#fff"
+                                buttonText="Learn More"
+                                
+                            />
+                        </Link>
                         </CardActions>
                     </Card>
                 </Box>
             </Grid>
             <Grid item xs={12} sm={6} lg={3}>
-                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                <Box >
                     <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%'}}>
                         <CardActionArea>
                         <CardMedia
@@ -63,14 +71,20 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button size="small" variant="contained">Learn more</Button>
-                            <Button size="small" variant="contained">Organise Now</Button>
+                        <Link to='/shubh/organise-tournament' style={{color: "inherit",textDecoration:"none"}}>
+                            <CustomButton
+                                backgroundColor="#3392FF"
+                                color="#fff"
+                                buttonText="Organise Tournament"
+                                
+                            />
+                        </Link>
                         </CardActions>
                     </Card>
                 </Box>
             </Grid>
            <Grid item xs={12} sm={6} lg={3}>
-            <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+            <Box >
                 <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%'}} >
                     <CardActionArea>
                     <CardMedia
@@ -90,15 +104,21 @@ const Features = () => {
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button size="small" variant="contained">Share</Button>
-                        <Button size="small" variant="contained">Latest News</Button>
+                    <Link to='/shubh/sports-news' style={{color: "inherit",textDecoration:"none"}}>
+                            <CustomButton
+                                backgroundColor="#3392FF"
+                                color="#fff"
+                                buttonText="Latest News"
+                                
+                            />
+                    </Link>
                     </CardActions>
                 </Card>
 
                 </Box>
             </Grid>
             <Grid item xs={12} sm={6} lg={3} > 
-                <Box sx={{height:{sm:'575px',lg:'650',xl:'575',}}}>
+                <Box >
                     <Card sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%' }}>
                         <CardActionArea>
                         <CardMedia
@@ -119,8 +139,14 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button size="small" variant="contained">share</Button>
-                            <Button size="small" variant="contained">Start Learning Today</Button>
+                        <Link to='/shubh/learn' style={{color: "inherit",textDecoration:"none"}}>
+                            <CustomButton
+                                backgroundColor="#3392FF"
+                                color="#fff"
+                                buttonText="Start Learning Today"
+                                
+                            />
+                        </Link>
                         </CardActions>
                     </Card>
                 </Box>

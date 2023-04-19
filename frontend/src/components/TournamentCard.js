@@ -7,11 +7,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import TournamentCup from '../assets/images/tournament-cup.jpg'
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
-import { Link } from 'react-router-dom';
-import { BorderColor } from '@mui/icons-material';
 
 const TournamentCard = ({tournament,setCurrentTournament}) => {
   const [selected,setSelected]=useState(false)
@@ -22,7 +19,6 @@ const TournamentCard = ({tournament,setCurrentTournament}) => {
   }
   return (
     <Box mx='10px' marginBottom='5px' style={{ border: selected ? '2px solid white' : 'none' }}>
-      <Link to='#' style={{color: "inherit",textDecoration:"none"}}>
        <Card onClick={handleClick} onBlur={()=>{setSelected(false)}} sx={{backgroundColor:'#3c3f4a',color:'white',height:'100%',objectFit:'fill'}}>
           <CardActionArea>
           <CardContent>
@@ -51,7 +47,6 @@ const TournamentCard = ({tournament,setCurrentTournament}) => {
           </CardContent>
           </CardActionArea>
       </Card>
-      </Link>
     </Box>                
   )
 }

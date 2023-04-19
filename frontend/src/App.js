@@ -12,6 +12,7 @@ import OrganiseTournament from './pages/OrganiseTournament'
 import {useAuthContext} from './hooks/useAuthContext'
 import { Navigate } from 'react-router-dom'
 import './App.css';
+import TournamentDetailPage from './pages/TournamenetDetailPage';
 
 
 
@@ -29,35 +30,39 @@ function App() {
                 element:<Home/>
             },
             {
-                path:'tournaments',
-                element:<Tournaments/>
+                path:'/shubh/tournaments',
+                element:<Tournaments/>,
             },
             {
-                path:'organise-tournament',
+                path:'/shubh/tournaments/:tournament_id',
+                element:<TournamentDetailPage/>
+            },
+            {
+                path:'/shubh/organise-tournament',
                 element:!user?<Login/>:<OrganiseTournament/>
             },
             {
-                path:'learn',
+                path:'/shubh/learn',
                 element:<Learn/>
             },
             {
-                path:'sports-news',
+                path:'/shubh/sports-news',
                 element:<SportsNews/>
             },
             {
-                path:'about-us',
+                path:'/shubh/about-us',
                 element:<AboutUs/>
             },
             {
-                path:'signup',
+                path:'/shubh/signup',
                 element:!user?<Signup/>:<Navigate to='/shubh'/>
             },
             {
-                path:'login',
+                path:'/shubh/login',
                 element: !user?<Login/>:<Navigate to='/shubh'/>
             },
             {
-                path:'profile',
+                path:'/shubh/profile',
                 element:<Profile/>
             },
         ]
