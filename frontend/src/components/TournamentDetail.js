@@ -99,7 +99,7 @@ const TournamentDetail = ({tournament,selected,isRegistered,setIsRegistered}) =>
             <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.2rem"} }} mt='35px'>Rules</Typography>
             {
                 tournament.rules.map((rule,key)=>(
-                    <Typography color='white'><IconButton><ArrowRightTwoToneIcon sx={{color:'#1adaa7'}}/></IconButton>{rule}</Typography>
+                    <Typography color='white' key={key}><IconButton><ArrowRightTwoToneIcon sx={{color:'#1adaa7'}}/></IconButton>{rule}</Typography>
                 ))
             }
             

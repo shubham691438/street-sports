@@ -67,7 +67,7 @@ const TournamentsSection = () => {
     <Box sx={{ flexGrow: 1, margin:"45px 45px" }}>
       <Hidden mdDown>
         <Grid container spacing={2}>
-          <Grid  xs={6} md={4} flexShrink={1}>
+          <Grid item xs={6} md={4} flexShrink={1}>
           <TableContainer sx={{ maxHeight: 900 }}>
               {
                 tournaments.map((tournament,key)=>{
@@ -76,7 +76,7 @@ const TournamentsSection = () => {
               }
             </TableContainer>
           </Grid>
-          <Grid  xs={6} md={8} flexShrink={2}>
+          <Grid item xs={6} md={8} flexShrink={2}>
           <TableContainer sx={{ maxHeight: 900 }}>
               {currentTournament&&(<TournamentDetail tournament={currentTournament} selected={selected} isRegistered={isRegistered} setIsRegistered={setIsRegistered}/>)}
             </TableContainer>
@@ -85,11 +85,11 @@ const TournamentsSection = () => {
       </Hidden>
       <Hidden mdUp>
       <Grid container spacing={2}>
-          <Grid  xs={12} flexShrink={1}>
+          <Grid item xs={12} flexShrink={1}>
           <TableContainer sx={{ maxHeight: 900 }}>
               {
                 tournaments.map((tournament,key)=>{
-                  return(<Link to={'/shubh/tournaments/'+tournament._id} style={{color: "inherit",textDecoration:"none"}}><TournamentCard tournament={tournament} key={key} setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Link>)
+                  return(<Link to={'/shubh/tournaments/'+tournament._id} style={{color: "inherit",textDecoration:"none"}} key={key}><TournamentCard tournament={tournament}  setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Link>)
                 })
               }
             </TableContainer>
