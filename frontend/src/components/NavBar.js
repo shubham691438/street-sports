@@ -39,7 +39,7 @@ const NavBar = () => {
                   backgroundColor="#3392FF"
                   color="#fff"
                   buttonText={user.name}
-                  heroBtn={true}
+                  
             /></NavLink>
                 <Button onClick={()=>{logout(); navigate('/shubh')}} sx={{backgroundColor:"#3392FF"}} variant='contained' style={{color: "inherit",textDecoration:"none"}}><Typography  >Log Out</Typography></Button>
               </Stack>}
@@ -48,6 +48,7 @@ const NavBar = () => {
               
             </Hidden>
             <Hidden mdUp>
+              <Stack direction='row' spacing={2}>
               {
                 user &&
                 <Link to='/shubh/profile' style={{color: "inherit",textDecoration:"none"}}>
@@ -81,6 +82,7 @@ const NavBar = () => {
                 </>
               )}
             </PopupState>
+            </Stack>
             </Hidden>
         </Toolbar>
         

@@ -34,7 +34,7 @@ const TournamentCard = ({tournament,setCurrentTournament}) => {
                 sx={{objectFit:'fill',marginTop:"10px"}}
                 
               />
-              <Stack direction='row'  mt={3} spacing={1}>
+              <Stack direction='row'  mt={3} spacing={1} flexWrap='wrap'>
                 <Chip label={tournament.state} color="primary" variant="outlined"/>
                 <Chip label={tournament.sport} color="primary" variant="outlined"/>
                 <Chip label={tournament.schedule.start_date.slice(0, 10)} color="primary" variant="outlined"/>

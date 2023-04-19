@@ -1,4 +1,4 @@
-import { Box, Button, styled, Typography,Stack } from "@mui/material";
+import { Box, Button, styled, Typography,Stack, Hidden } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import EventsCarousal from '../components/EventsCarousel'
@@ -53,9 +53,7 @@ const Hero = () => {
             >
               Discover Your Next Challenge
             </Typography>
-            <Title variant="h1">
-            Compete, Conquer, and Connect 
-            </Title>
+            <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{lg:"3.5rem",sm:"2rem",xs:"1.5rem"}}}>Compete, Conquer, and Connect</Typography>
             <Typography
               variant="body2"
               sx={{ fontSize: "18px", color: "white", my: 4 }}
@@ -63,7 +61,7 @@ const Hero = () => {
              We provides a dynamic platform for athletes of all levels
             to come together and compete in a variety of sports tournaments
             </Typography>
-            <Stack direction='row' spacing={2}>
+            <Stack direction='row' spacing={2} mt={10}>
             <CustomButton
               backgroundColor="#3392FF"
               color="#fff"
@@ -79,13 +77,15 @@ const Hero = () => {
             </Stack>
           </Box>
 
+          <Hidden mdDown>    
           <Box sx={{ flex: "1.25" }}>
             <img
               src={heroImg}
               alt="heroImg"
-              style={{ maxWidth: "100%", marginBottom: "2rem" }}
+              style={{ maxWidth: "80%", marginBottom: "2rem" }}
             />
           </Box>
+          </Hidden>
         </CustomBox>
       </Container>
       <EventsCarousal/>

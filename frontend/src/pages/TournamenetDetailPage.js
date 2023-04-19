@@ -28,6 +28,21 @@ const TournamentDetailPage = () => {
     const navigate=useNavigate()
 
     useEffect(()=>{
+        const fetchTournament=async()=>{
+          const res= await fetch(`/api/tournaments/${tournament_id}`,{
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+          })
+          const json= await res.json();
+          
+          setTournament(json)
+          
+        }
+    
+        fetchTournament()
+      },[])
+
+    useEffect(()=>{
         const checkRegistrationStatus=async()=>{
           const response = await fetch('/api/tournaments/registration-status', {
             method: 'POST',
@@ -47,30 +62,18 @@ const TournamentDetailPage = () => {
             setIsRegistered(false)
           }  
         }
-    
+        
+        
         if(user)
         {
           checkRegistrationStatus()
-        }
-    
-      },[])
-     
-    
-      useEffect(()=>{
-        const fetchTournament=async()=>{
-          const res= await fetch(`/api/tournaments/${tournament_id}`,{
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-          })
-          console.log("res",res)
-          const json= await res.json();
-          console.log("json",json)
-          setTournament(json)
           
         }
+        
     
-        fetchTournament()
-      },[])
+      })
+     
+    
     
   
 
@@ -109,13 +112,14 @@ const TournamentDetailPage = () => {
           <CardContent sx={{border:'2px solid black'}}>
               <Typography  sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.5rem"} }}>{tournament.name}</Typography>
               <Typography sx={{fontFamily:"sans-serif" , color:'#808080'}} >
-              <IconButton sx={{color:'primary.main'}}><AccountBalanceIcon/></IconButton>{tournament.district} ,{tournament.state}{console.log(tournament.organizer.name)}
-              </Typography>
+                
+                {/* using optioanl chaining -- tournament?.organizer?.name because nested data might not be populated when i am using */}
+              <IconButton sx={{color:'primary.main'}}><AccountBalanceIcon/></IconButton>{tournament.organizer?.name}, {tournament.district} ,{tournament.state} </Typography>
               
               <Stack direction='row'  mt={3} spacing={1} mb='15px'>
                 <Chip label={tournament.state} color="primary" variant="outlined"/>
                 <Chip label={tournament.sport} color="primary" variant="outlined"/>
-                <Chip label={tournament.schedule.start_date.slice(0, 10)} color="primary" variant="outlined"/>
+                <Chip label={tournament.schedule?.start_date.slice(0, 10)} color="primary" variant="outlined"/>
               </Stack>
               <Divider sx={{backgroundColor:'white'}} />
             
@@ -131,12 +135,12 @@ const TournamentDetailPage = () => {
             </Stack>
             <Stack direction='row' mt={3} justifyContent='space-between'>
                 <Stack spacing={1}>
-                <Typography color='white'><IconButton><AccessTimeFilledIcon sx={{color:'#1adaa7'}}/></IconButton>Start : {tournament.schedule.start_date.slice(0, 10)}</Typography>
-                <Typography color='white'><IconButton><TimelapseIcon sx={{color:'#1adaa7'}}/></IconButton>Duration : {tournament.schedule.duration}</Typography>
+                <Typography color='white'><IconButton><AccessTimeFilledIcon sx={{color:'#1adaa7'}}/></IconButton>Start : {tournament.schedule?.start_date.slice(0, 10)}</Typography>
+                <Typography color='white'><IconButton><TimelapseIcon sx={{color:'#1adaa7'}}/></IconButton>Duration : {tournament.schedule?.duration}</Typography>
                 </Stack>
             <Stack  spacing={1}>
-                <Typography color='white'><IconButton><SportsGymnasticsIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.participants.total}+ participants</Typography> 
-                <Typography color='white'><IconButton><PeopleAltIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.audience.no_of_audience}+ audience</Typography>
+                <Typography color='white'><IconButton><SportsGymnasticsIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.participants?.total}+ participants</Typography> 
+                <Typography color='white'><IconButton><PeopleAltIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.audience?.no_of_audience}+ audience</Typography>
             </Stack>
             </Stack>
             
@@ -148,16 +152,16 @@ const TournamentDetailPage = () => {
 
             <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.2rem"} }} mt='35px'>Rules</Typography>
             {
-                tournament.rules.map((rule,key)=>(
+                tournament.rules?.map((rule,key)=>(
                     <Typography color='white' key={key}><IconButton><ArrowRightTwoToneIcon sx={{color:'#1adaa7'}}/></IconButton>{rule}</Typography>
                 ))
             }
             
             <Divider sx={{backgroundColor:'white'}} />
             <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.2rem"} }} mt='35px'>Contact Person</Typography>
-            <Typography color='white'><IconButton><PersonIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer.contact_person}</Typography>
-            <Typography color='white'><IconButton><LocalPhoneIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer.phone}</Typography>
-            <Typography color='white'><IconButton><EmailIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer.email}</Typography>
+            <Typography color='white'><IconButton><PersonIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer?.contact_person}</Typography>
+            <Typography color='white'><IconButton><LocalPhoneIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer?.phone}</Typography>
+            <Typography color='white'><IconButton><EmailIcon sx={{color:'#1adaa7'}}/></IconButton>{tournament.organizer?.email}</Typography>
 
             <Divider sx={{backgroundColor:'white'}} />
             <Typography sx={{color:"#1adaa7",fontWeight:"bold",fontFamily:"sans-serif",fontSize:{xs:"1.2rem"} }} mt='35px'>Reward And Prizes</Typography>
@@ -165,19 +169,19 @@ const TournamentDetailPage = () => {
                 <Paper elevation={3}  sx={{backgroundColor:'inherit',width:'100%', height:'100px'}}>
                     <Stack direction='row' justifyContent='space-between'>
                       <Typography color='white' margin='5px 10px'><IconButton><MilitaryTechTwoToneIcon fontSize='large'  sx={{color:'#1adaa7'}}/></IconButton>Winner</Typography>
-                      <Chip  label={"Rs "+tournament.prize_pool.first_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
+                      <Chip  label={"Rs "+tournament.prize_pool?.first_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
                     </Stack>
                 </Paper>
                 <Paper elevation={3} sx={{backgroundColor:'inherit',width:'100%', height:'100px'}}>
                     <Stack direction='row' justifyContent='space-between'>
                       <Typography color='white' margin='5px 10px'><IconButton><MilitaryTechTwoToneIcon fontSize='large'  sx={{color:'#1adaa7'}}/></IconButton>First Runner Up</Typography>
-                      <Chip  label={"Rs "+tournament.prize_pool.second_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
+                      <Chip  label={"Rs "+tournament.prize_pool?.second_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
                     </Stack>
                 </Paper>
                 <Paper elevation={3} sx={{backgroundColor:'inherit',width:'100%', height:'100px'}}>
                     <Stack direction='row' justifyContent='space-between'>
                       <Typography color='white' margin='5px 10px'><IconButton><MilitaryTechTwoToneIcon fontSize='large'  sx={{color:'#1adaa7'}}/></IconButton>Second Runner Up</Typography>
-                      <Chip  label={"Rs "+tournament.prize_pool.third_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
+                      <Chip  label={"Rs "+tournament.prize_pool?.third_place} sx={{marginTop:'20px', marginRight:'20px'}} color="primary" />
                     </Stack>
                 </Paper>
             </Stack>

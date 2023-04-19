@@ -35,7 +35,7 @@ const EventsCarousel = () => {
     ]
 
   return (
-    <Carousel sx={{margin:"5% 10%"}} navButtonsAlwaysVisible='true'>
+    <Carousel sx={{margin:"5% 10%"}} navButtonsAlwaysVisible='true' height='300px'>
         {
             items.map((item,key)=><CarouselCard key={key} item={item}/>)
         }
