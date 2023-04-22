@@ -22,7 +22,6 @@ const signup = async (req, res) => {
     // create a token
     const token = createToken(user._id)
     
-    console.log(dob)
     res.status(200).json({user_id:user._id,name,district,state,gender,dob,phone_no,email, token})
   } catch (error) {
     res.status(400).json({error: error.message})
@@ -56,11 +55,11 @@ const login = async (req, res) => {
   }
 }
 
-//logout get  request to log a user out
-const logout =(req,res)=>{
-    res.cookie('jwt','',{maxAge:1,HttpOnly:true})
-    res.status(200).json({msg:"logged out successfully"})
-}
+// //logout get  request to log a user out
+// const logout =(req,res)=>{
+//     res.cookie('jwt','',{maxAge:1,HttpOnly:true})
+//     res.status(200).json({msg:"logged out successfully"})
+// }
 
 module.exports={
     signup,
