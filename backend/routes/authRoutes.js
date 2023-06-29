@@ -3,9 +3,7 @@ const router=express.Router();
 const {
     signup,
     login,
-    logout
 } = require('../controllers/authController')
-
 const requireAuth =require('../middleware/requireAuth')
 
 //signup post request to create a new user in db
