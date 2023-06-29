@@ -29,17 +29,17 @@ const Footer = () => {
             <Grid item xs={10} sm={3} lg={2}   sx={{mt:'30px'}}>
                 <Stack alignItems='center'>
                    <Typography fontWeight='bold' fontSize={25} color='#1adaa7'>Features</Typography> 
-                   <Link to='/shubh/tournaments' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Tournaments</Typography></Link> 
-                   <Link to='/shubh/learn' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Learn</Typography></Link> 
-                   <Link to='/shubh/sports-news' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Sports News</Typography></Link>
+                   <Link to='/tournaments' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Tournaments</Typography></Link> 
+                   <Link to='/learn' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Learn</Typography></Link> 
+                   <Link to='/sports-news' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Sports News</Typography></Link>
                    
                 </Stack>
             </Grid>
             <Grid item xs={10} sm={3} lg={2}   sx={{mt:'30px'}}>
                 <Stack alignItems='center'>
                    <Typography fontWeight='bold' fontSize={25} color='#1adaa7'>Company</Typography> 
-                   <Link to='/shubh/about-us' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>About</Typography> </Link>
-                   <Link to='/shubh/organise-tournament' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Organise Tournament</Typography> </Link>
+                   <Link to='/about-us' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>About</Typography> </Link>
+                   <Link to='/organise-tournament' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>Organise Tournament</Typography> </Link>
                    <Link to='#' style={{color: "inherit",textDecoration:"none"}}><Typography color='white'>FAQ</Typography></Link>
                    
                 </Stack>

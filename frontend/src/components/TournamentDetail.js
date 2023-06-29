@@ -47,7 +47,7 @@ const TournamentDetail = ({tournament,selected,isRegistered,setIsRegistered}) =>
     }
     else
     {
-      navigate('/shubh/login')
+      navigate('/login')
     }
     
   }
