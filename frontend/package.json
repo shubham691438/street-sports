@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:3030/",
+  "proxy": "https://street-sports-backend.onrender.com/",
   "name": "street-sports",
   "version": "0.1.0",
   "private": true,
