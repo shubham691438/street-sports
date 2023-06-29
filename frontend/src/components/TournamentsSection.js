@@ -89,7 +89,7 @@ const TournamentsSection = () => {
           <TableContainer sx={{ maxHeight: 900 }}>
               {
                 tournaments.map((tournament,key)=>{
-                  return(<Link to={'/shubh/tournaments/'+tournament._id} style={{color: "inherit",textDecoration:"none"}} key={key}><TournamentCard tournament={tournament}  setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Link>)
+                  return(<Link to={'/tournaments/'+tournament._id} style={{color: "inherit",textDecoration:"none"}} key={key}><TournamentCard tournament={tournament}  setCurrentTournament={setCurrentTournament} setSelected={setSelected}/></Link>)
                 })
               }
             </TableContainer>

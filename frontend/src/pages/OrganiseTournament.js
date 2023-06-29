@@ -26,7 +26,7 @@ export default function OrganiseTournament() {
   {
     // alert("Congratulations : tournament deatils added successfully");
     setTimeout(()=>{
-      navigate('/shubh/tournaments')
+      navigate('/tournaments')
     },2000)
     
   }

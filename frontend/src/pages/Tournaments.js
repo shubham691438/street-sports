@@ -72,7 +72,7 @@ const Hero = () => {
               backgroundColor="#3392FF"
               color="#fff"
               buttonText="Organise Tournaments"
-              onClickFunction={()=>{navigate('/shubh/organise-tournament')}}
+              onClickFunction={()=>{navigate('/organise-tournament')}}
             />
             </Stack>
           </Box>

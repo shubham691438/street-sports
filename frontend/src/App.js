@@ -21,48 +21,48 @@ function App() {
 
   const {user}=useAuthContext();
   const Routes = [
-    {
-        path:'/shubh',
-        element: <Layout/>,
+      {
+          path:'/',
+          element: <Layout/>,
         children:[
             {
                 index:true,
                 element:<Home/>
             },
             {
-                path:'/shubh/tournaments',
+                path:'/tournaments',
                 element:<Tournaments/>,
             },
             {
-                path:'/shubh/tournaments/:tournament_id',
+                path:'/tournaments/:tournament_id',
                 element:<TournamentDetailPage/>
             },
             {
-                path:'/shubh/organise-tournament',
+                path:'/organise-tournament',
                 element:!user?<Login/>:<OrganiseTournament/>
             },
             {
-                path:'/shubh/learn',
+                path:'/learn',
                 element:<Learn/>
             },
             {
-                path:'/shubh/sports-news',
+                path:'/sports-news',
                 element:<SportsNews/>
             },
             {
-                path:'/shubh/about-us',
+                path:'/about-us',
                 element:<AboutUs/>
             },
             {
-                path:'/shubh/signup',
-                element:!user?<Signup/>:<Navigate to='/shubh'/>
+                path:'/signup',
+                element:!user?<Signup/>:<Navigate to='/'/>
             },
             {
-                path:'/shubh/login',
-                element: !user?<Login/>:<Navigate to='/shubh'/>
+                path:'/login',
+                element: !user?<Login/>:<Navigate to='/'/>
             },
             {
-                path:'/shubh/profile',
+                path:'/profile',
                 element:<Profile/>
             },
         ]

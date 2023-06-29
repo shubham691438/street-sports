@@ -101,7 +101,7 @@ const TournamentDetailPage = () => {
     }
     else
     {
-      navigate('/shubh/login')
+      navigate('/login')
     }
     
   }

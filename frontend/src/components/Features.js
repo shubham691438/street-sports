@@ -38,7 +38,7 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                        <Link to='/shubh/tournaments' style={{color: "inherit",textDecoration:"none"}}>
+                        <Link to='/tournaments' style={{color: "inherit",textDecoration:"none"}}>
                             <CustomButton
                                 backgroundColor="#3392FF"
                                 color="#fff"
@@ -71,7 +71,7 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                        <Link to='/shubh/organise-tournament' style={{color: "inherit",textDecoration:"none"}}>
+                        <Link to='/organise-tournament' style={{color: "inherit",textDecoration:"none"}}>
                             <CustomButton
                                 backgroundColor="#3392FF"
                                 color="#fff"
@@ -104,7 +104,7 @@ const Features = () => {
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                    <Link to='/shubh/sports-news' style={{color: "inherit",textDecoration:"none"}}>
+                    <Link to='/sports-news' style={{color: "inherit",textDecoration:"none"}}>
                             <CustomButton
                                 backgroundColor="#3392FF"
                                 color="#fff"
@@ -139,7 +139,7 @@ const Features = () => {
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                        <Link to='/shubh/learn' style={{color: "inherit",textDecoration:"none"}}>
+                        <Link to='/learn' style={{color: "inherit",textDecoration:"none"}}>
                             <CustomButton
                                 backgroundColor="#3392FF"
                                 color="#fff"
