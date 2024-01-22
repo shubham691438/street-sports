@@ -22,15 +22,15 @@ events, registrations, and other related data
 
 ![Screenshot 2024-01-22 225026](https://github.com/shubham691438/street-sports/assets/90411262/87aac41f-52cb-48f0-a68d-8d228c6c7a13)
 
-**Sports Tournament Details And Registration**
+## Sports Tournament Details And Registration
 
 ![Screenshot 2024-01-22 225044](https://github.com/shubham691438/street-sports/assets/90411262/93f125e6-7ddf-4778-b888-1f9e6f438df1)
 
-**Login And Sign Up**
+## **Login And Sign Up**
 
 ![Screenshot 2024-01-22 225101](https://github.com/shubham691438/street-sports/assets/90411262/aef3e70c-b77e-445b-be2c-a0aba300d605)
 
-**User Profile**
+## **User Profile**
 ![Screenshot 2024-01-22 225149](https://github.com/shubham691438/street-sports/assets/90411262/5a3c17dc-0877-4458-a43c-d293e41f2baf)
 ![Screenshot 2024-01-22 225157](https://github.com/shubham691438/street-sports/assets/90411262/92b06b07-cf3d-49d5-94a7-5aa556f4d13c)
 ![Screenshot 2024-01-22 225204](https://github.com/shubham691438/street-sports/assets/90411262/138a5061-fc5a-4906-8587-b559ff8440ca)
