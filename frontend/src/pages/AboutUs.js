@@ -1,77 +1,47 @@
-import { Box } from '@mui/material'
-import React from 'react'
+import { Box } from '@mui/material';
+import React from 'react';
 
 const AboutUs = () => {
-  let message = ``;
+  const message = "Meet the dedicated team behind Street Sports";
+
   return (
-    <Box color='white'>
-        <div class="container">
- 
- <div class="row">
+    <Box sx={{ color: 'white'  }}>
+      <div className="cards-container">
+        <div className="text-center">
+          <h2 className="section-title">The Team Behind Street Sports</h2>
+          <p className="section-subtitle">{message}</p>
+        </div>
 
-             <div className="col-md-12 text-center">
+        <div className="cards">
+          <div className="team-card">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D5603AQHLiAyWDB8OAg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1720979190515?e=1731542400&v=beta&t=dLW3Mc52ZdeC4BYuIiFYulJvR3lDZuHqit7VFMnuapo"
+              className="team-img"
+              alt="Shubham Singh"
+            />
+            <h3>SHUBHAM SINGH</h3>
+            <div className="team-info">
+              <p>MERN Stack Developer</p>
+            </div>
+            <p className="paracolor">Shubham Singh is our co-founder.</p>
+          </div>
 
-                   <h2 className="section-title">The Team Behind Street Sports</h2>
-
-                   <p className="section-subtitle">{message}</p>
-                   
-             </div> 
-      
-     <div className="col-sm-6 col-md-4">
-
-           <div className="team-item">
-           
-               <img src="https://media.licdn.com/dms/image/C5603AQFxFx4ALwrtWA/profile-displayphoto-shrink_400_400/0/1667883049367?e=1687392000&v=beta&t=WRd9wo2xhRZ3SuhPoD-JJ3COtAiH4iV518WWGDXTgLY" class="team-img" alt="pic" />                   
-               <h3>SHUBHAM SINGH</h3>            
-               <div className="team-info"><p>MERN Stack Developer</p></div>
-               <p>Shubham Singh is our  co-founder </p>
-           
-              
-               
-           
-         </div>
-     </div> 
-       
-     <div className="col-sm-6 col-md-4">
-
-           <div className="team-item">
-           
-               <img src="https://media.licdn.com/dms/image/D4D03AQG24btu7xgzCg/profile-displayphoto-shrink_400_400/0/1668298046876?e=1687392000&v=beta&t=Y94fr4mlSBbwXIx3_4RLM1MLQriwEKVnWeqmqM8Pkk8" class="team-img" alt="pic" />
-              
-               <h3>KISHAN KUMAR</h3>
-               
-               <div className="team-info"><p>Frontend Developer</p></div>
-
-               <p className="paracolor">Kishan Kumar is our co-founder and has developed Sports News page and About Us section.</p>
-           
-               
-               
-           </div>
-
-     </div> 
-     <div className="col-sm-6 col-md-4">
-
-           <div className="team-item">
-           
-               <img src="https://media.licdn.com/dms/image/C4D03AQHDXuBaUJjdrw/profile-displayphoto-shrink_400_400/0/1658673828384?e=1687392000&v=beta&t=0ONXe-ODseYPdAB3dRujQM-9HBRd_Sx_Cmui1Yi6iEA" class="team-img" alt="pic" />
-              
-               <h3>ANISH KUMAR</h3>
-               
-               <div className="team-info"><p>Frontend Developer</p></div>
-
-               <p className="paracolor">Anish Kumar is our co-founder and has developed styling part of the page.</p>
-           
-               
-               
-           </div>
-
-     </div> 
- 
- </div> 
-
-</div>
+          <div className="team-card">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQGqui2zPMPNiw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1703844876797?e=1731542400&v=beta&t=dh5ShV_Ov1clloZUa7k1IY9VSpck0kOVDMBev-5UCJI"
+              className="team-img"
+              alt="Kishan Kumar"
+            />
+            <h3>KISHAN KUMAR</h3>
+            <div className="team-info">
+              <p>MERN Stack Developer</p>
+            </div>
+            <p className="paracolor">Kishan Kumar is our co-founder.</p>
+          </div>
+        </div>
+      </div>
     </Box>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;
