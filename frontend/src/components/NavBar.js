@@ -71,6 +71,7 @@ const NavBar = () => {
                     <Link to='/tournaments' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Tournaments</MenuItem></Link>
                     <Link to='/learn' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Learn</MenuItem></Link>
                     <Link to='/sports-news' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Sports News</MenuItem></Link>
+                    <Link to='/about-us' style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>About Us</MenuItem></Link>
                     {
                       user && <Link onClick={()=>{logout(); navigate('/')}} style={{color: "inherit",textDecoration:"none"}}><MenuItem onClick={popupState.close}>Logout</MenuItem></Link>
                     }
