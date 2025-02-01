@@ -14,13 +14,13 @@ import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const GradientCard = styled(Card)(({ theme }) => ({
-  background: 'linear-gradient(to bottom, #4a148c, #000000)',
+  background: 'linear-gradient(to bottom,rgb(13, 92, 132), #000000)',
   color: 'white',
   borderRadius: '8px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   transition: 'transform 0.3s, box-shadow 0.3s',
   '&:hover': {
-    background: 'linear-gradient(to bottom, #6a1b9a, #1c1c1c)',
+    background: 'linear-gradient(to bottom,rgb(27, 122, 154), #1c1c1c)',
     boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
     transform: 'scale(1.02)',
   }

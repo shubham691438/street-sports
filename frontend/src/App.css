@@ -100,7 +100,7 @@
 }
 
 .section-title {
-  color: #1adaa7; /* Updated color */
+  color: #1adaa7; 
   font-size: 2.5rem;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -136,7 +136,7 @@
 }
 
 .team-card {
-  background: #333;
+  background: #1976d2;
   color: #fff;
   text-align: center;
   margin: 15px;
@@ -181,7 +181,7 @@
   margin: 10px 0;
   font-size: 1.4rem;
   font-weight: bold;
-  color: #1adaa7; /* Updated color */
+  color: #fff; 
   transition: color 0.4s ease;
 }
 
