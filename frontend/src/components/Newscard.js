@@ -47,7 +47,7 @@ export default function NewsCard({ currentPosts }) {
   };
 
   return (
-    <GradientCard sx={{ maxWidth: 345, margin: 2 }}>
+    <GradientCard sx={{ maxWidth: 345, margin: 2,marginBottom: 2 }}>
       <StyledCardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

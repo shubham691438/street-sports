@@ -17,7 +17,7 @@ const userSchema = new Schema({
   district:String,
   state:String,
   gender:String,
-  dob:Number,
+  dob:String,
   phone_no:Number,
   email: {
     type: String,

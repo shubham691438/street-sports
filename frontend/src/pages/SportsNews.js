@@ -27,7 +27,7 @@ const SportsNews = () => {
       color="white"
       sx={{
         padding: '20px',
-        backgroundColor: 'black',
+        backgroundColor: '#25272e;',
       }}
     >
       <Typography variant="h2" align="center" gutterBottom>
@@ -37,7 +37,8 @@ const SportsNews = () => {
         direction="row"
         flexWrap="wrap"
         justifyContent="center"
-        spacing={4}
+        // spacing={4}
+        
          // Adds spacing between cards
       >
         {news.slice(page * 10 - 10, page * 10).map((currentPosts, key) => (
