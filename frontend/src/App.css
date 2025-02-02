@@ -136,7 +136,7 @@
 }
 
 .team-card {
-  background: #1976d2;
+  background: linear-gradient(to bottom,rgb(13, 92, 132), #000000);
   color: #fff;
   text-align: center;
   margin: 15px;
